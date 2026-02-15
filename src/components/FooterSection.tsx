@@ -16,7 +16,7 @@ const FooterSection = () => {
 
           <div className="flex flex-col sm:flex-row gap-4 sm:items-start sm:justify-end">
             <a
-              href="https://t.me/"
+              href="https://t.me/MarinaLiiv"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-3 px-6 py-3.5 rounded-lg bg-primary text-primary-foreground font-semibold transition-all duration-300 hover:bg-indigo-dark"
@@ -25,7 +25,7 @@ const FooterSection = () => {
               Telegram
             </a>
             <a
-              href="mailto:hello@example.com"
+              href="mailto:liivm@yandex.ru"
               className="inline-flex items-center gap-3 px-6 py-3.5 rounded-lg border border-slate-600 text-slate-200 font-semibold transition-all duration-300 hover:border-slate-400 hover:text-slate-50"
             >
               <Mail className="w-4 h-4" />
