@@ -34,7 +34,9 @@ const HeroSection = () => {
 
           <div className="pt-4">
             <a
-              href="#contact"
+              href="https://t.me/MarinaLiiv"
+              target="_blank"
+              rel="noopener noreferrer"
               className="group inline-flex items-center gap-3 px-8 py-4 rounded-lg bg-primary text-primary-foreground font-semibold text-base shadow-hero transition-all duration-300 hover:bg-indigo-dark hover:gap-4"
             >
               Обсудить проект
