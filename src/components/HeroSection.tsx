@@ -20,7 +20,7 @@ const HeroSection = () => {
             <span className="text-sm font-medium text-primary">AI & Digital Products</span>
           </div>
 
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tight text-foreground leading-[1.1]">
+          <h1 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold tracking-tight text-foreground leading-[1.1]">
             Марина Лийв.{" "}
             <span className="text-gradient">
 AI‑интегратор</span>{" "}
