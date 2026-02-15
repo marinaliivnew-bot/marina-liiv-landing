@@ -25,7 +25,7 @@ const expertise = [
 
 const ExpertiseSection = () => {
   return (
-    <section className="py-24 lg:py-32 bg-background">
+    <section id="expertise" className="py-24 lg:py-32 bg-background">
       <div className="container mx-auto px-6 lg:px-8 max-w-5xl">
         <div className="space-y-4 mb-16">
           <p className="text-sm font-semibold uppercase tracking-widest text-primary">
