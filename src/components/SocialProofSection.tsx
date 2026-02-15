@@ -17,7 +17,7 @@ const metrics = [
 
 const SocialProofSection = () => {
   return (
-    <section className="py-24 lg:py-32 bg-slate-deep relative overflow-hidden">
+    <section id="experience" className="py-24 lg:py-32 bg-slate-deep relative overflow-hidden">
       {/* Subtle accent line */}
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-indigo to-transparent opacity-30" />
 

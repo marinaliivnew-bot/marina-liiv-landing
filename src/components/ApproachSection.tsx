@@ -8,7 +8,7 @@ const pillars = [
 
 const ApproachSection = () => {
   return (
-    <section className="py-24 lg:py-32 bg-surface-sunken">
+    <section id="approach" className="py-24 lg:py-32 bg-surface-sunken">
       <div className="container mx-auto px-6 lg:px-8 max-w-5xl">
         <div className="grid lg:grid-cols-2 gap-16 items-start">
           {/* Left */}

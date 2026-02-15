@@ -1,3 +1,4 @@
+import NavHeader from "@/components/NavHeader";
 import HeroSection from "@/components/HeroSection";
 import SocialProofSection from "@/components/SocialProofSection";
 import ExpertiseSection from "@/components/ExpertiseSection";
@@ -8,6 +9,7 @@ import FooterSection from "@/components/FooterSection";
 const Index = () => {
   return (
     <main className="min-h-screen">
+      <NavHeader />
       <HeroSection />
       <SocialProofSection />
       <ExpertiseSection />
