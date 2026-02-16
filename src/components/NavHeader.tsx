@@ -24,50 +24,46 @@ const NavHeader = () => {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
-          ? "bg-background/80 backdrop-blur-xl border-b border-border/50 shadow-sm"
+          ? "bg-background/85 backdrop-blur-xl border-b border-border/30"
           : "bg-transparent"
       }`}
     >
-      <div className="container mx-auto px-6 lg:px-8 max-w-5xl">
+      <div className="container mx-auto px-6 lg:px-8 max-w-6xl">
         <div className="flex items-center justify-between h-16">
-          {/* Logo */}
-          <a href="#" className="flex items-center gap-2 group" onClick={handleClick}>
-            <span className="inline-flex items-center justify-center w-9 h-9 rounded-lg bg-primary text-primary-foreground text-sm font-bold tracking-tight">
+          <a href="#" className="flex items-center gap-2.5 group" onClick={handleClick}>
+            <span className="inline-flex items-center justify-center w-9 h-9 rounded-md border border-accent-violet/30 text-accent-violet text-sm font-bold tracking-tight">
               ML
             </span>
-            <span className="text-base font-semibold text-foreground hidden sm:inline">
+            <span className="text-sm font-medium text-foreground hidden sm:inline tracking-wide">
               Marina Liiv
             </span>
           </a>
 
-          {/* Desktop nav */}
           <nav className="hidden md:flex items-center gap-1">
             {navLinks.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
-                className="px-4 py-2 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors rounded-md hover:bg-accent/10"
+                className="px-4 py-2 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
               >
                 {link.label}
               </a>
             ))}
           </nav>
 
-          {/* Desktop CTA */}
           <a
             href="https://t.me/MarinaLiiv"
             target="_blank"
             rel="noopener noreferrer"
-            className="hidden md:inline-flex items-center gap-2 px-5 py-2 rounded-lg bg-primary text-primary-foreground text-sm font-semibold transition-all duration-200 hover:bg-indigo-dark"
+            className="hidden md:inline-flex items-center gap-2 px-5 py-2 rounded-md border border-accent-violet/30 text-foreground text-sm font-medium transition-all duration-300 hover:border-accent-violet hover:shadow-glow"
           >
             Обсудить проект
-            <ArrowRight className="w-4 h-4" />
+            <ArrowRight className="w-3.5 h-3.5" />
           </a>
 
-          {/* Mobile hamburger */}
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
-            className="md:hidden p-2 rounded-md text-foreground hover:bg-accent/10 transition-colors"
+            className="md:hidden p-2 text-foreground"
             aria-label="Toggle menu"
           >
             {mobileOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
@@ -75,16 +71,15 @@ const NavHeader = () => {
         </div>
       </div>
 
-      {/* Mobile menu */}
       {mobileOpen && (
-        <div className="md:hidden bg-background/95 backdrop-blur-xl border-t border-border/50">
+        <div className="md:hidden bg-background/95 backdrop-blur-xl border-t border-border/30">
           <nav className="container mx-auto px-6 py-4 flex flex-col gap-1">
             {navLinks.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
                 onClick={handleClick}
-                className="px-4 py-3 text-base font-medium text-muted-foreground hover:text-foreground hover:bg-accent/10 rounded-lg transition-colors"
+                className="px-4 py-3 text-base font-medium text-muted-foreground hover:text-foreground transition-colors"
               >
                 {link.label}
               </a>
@@ -94,10 +89,10 @@ const NavHeader = () => {
               target="_blank"
               rel="noopener noreferrer"
               onClick={handleClick}
-              className="mt-2 flex items-center justify-center gap-2 px-5 py-3 rounded-lg bg-primary text-primary-foreground text-sm font-semibold"
+              className="mt-2 flex items-center justify-center gap-2 px-5 py-3 rounded-md border border-accent-violet/30 text-foreground text-sm font-medium"
             >
               Обсудить проект
-              <ArrowRight className="w-4 h-4" />
+              <ArrowRight className="w-3.5 h-3.5" />
             </a>
           </nav>
         </div>
