@@ -28,9 +28,9 @@ const HeroSection = () => {
             </div>
 
             <h1 className="font-serif-display text-3xl sm:text-4xl lg:text-5xl text-foreground leading-[1.15] tracking-tight">
-              Марина Лийв.{" "}
-              <span className="text-gradient">AI‑стратег</span>{" "}
-              и&nbsp;архитектор цифровых&nbsp;систем.
+              Соединяю бизнес и&nbsp;AI{" "}
+              <span className="text-gradient">в&nbsp;работающие</span>{" "}
+              решения.
             </h1>
 
             <p className="text-base sm:text-lg text-muted-foreground max-w-xl leading-relaxed">
