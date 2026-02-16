@@ -51,10 +51,10 @@ const HeroSection = () => {
           {/* Right — Portrait */}
           <div className="flex justify-center lg:justify-end order-1 lg:order-2">
             <div className="relative w-72 sm:w-80 lg:w-96">
-              <img
+              
 
-                alt="Марина Лийв — AI-стратег"
-                className="w-full h-auto rounded-lg" src="/lovable-uploads/b0389d18-8dd7-40f7-a61d-cfff4783dbfd.png" />
+
+
 
             </div>
           </div>
