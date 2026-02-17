@@ -3,7 +3,7 @@ import { Package, Rocket, Globe } from "lucide-react";
 const metrics = [
   { icon: Package, title: "Управление портфелем 150+ SKU" },
   { icon: Rocket, title: "Запуск продуктов с нуля на международных рынках" },
-  { icon: Globe, title: "Координация мультистрановых команд" },
+  { icon: Globe, title: "Управление кросс-функциональными командами" },
 ];
 
 const SocialProofSection = () => {
