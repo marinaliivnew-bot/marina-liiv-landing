@@ -1,9 +1,10 @@
-import { Package, Rocket, Globe } from "lucide-react";
+import { Package, Rocket, Globe, Lightbulb } from "lucide-react";
 
 const metrics = [
   { icon: Package, title: "Управление портфелем 150+ SKU" },
   { icon: Rocket, title: "Запуск продуктов с нуля на международных рынках" },
   { icon: Globe, title: "Управление кросс-функциональными командами" },
+  { icon: Lightbulb, title: "Глубокое понимание продуктовой логики, коммерческой модели и пользовательского поведения" },
 ];
 
 const SocialProofSection = () => {
@@ -31,7 +32,7 @@ const SocialProofSection = () => {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-px bg-border/30 rounded-lg overflow-hidden">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-px bg-border/30 rounded-lg overflow-hidden">
           {metrics.map((metric, index) => (
             <div
               key={index}
