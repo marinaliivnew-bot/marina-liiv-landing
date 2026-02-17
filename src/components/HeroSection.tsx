@@ -1,5 +1,5 @@
 import { ArrowRight } from "lucide-react";
-import portraitImage from "@/assets/portrait.png";
+import heroGraphic from "@/assets/hero-graphic.png";
 
 const HeroSection = () => {
   return (
@@ -51,11 +51,11 @@ const HeroSection = () => {
           {/* Right — Portrait */}
           <div className="flex justify-center lg:justify-end order-1 lg:order-2">
             <div className="relative w-72 sm:w-80 lg:w-96">
-              
-
-
-
-
+              <img
+                src={heroGraphic}
+                alt="AI neural network illustration"
+                className="w-full h-auto opacity-85 drop-shadow-2xl"
+              />
             </div>
           </div>
         </div>
