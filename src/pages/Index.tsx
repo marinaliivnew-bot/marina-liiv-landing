@@ -1,6 +1,7 @@
 import NavHeader from "@/components/NavHeader";
 import HeroSection from "@/components/HeroSection";
 import SocialProofSection from "@/components/SocialProofSection";
+import WhyDifferentSection from "@/components/WhyDifferentSection";
 import ExpertiseSection from "@/components/ExpertiseSection";
 import ApproachSection from "@/components/ApproachSection";
 import FormatsSection from "@/components/FormatsSection";
@@ -12,6 +13,7 @@ const Index = () => {
       <NavHeader />
       <HeroSection />
       <SocialProofSection />
+      <WhyDifferentSection />
       <ExpertiseSection />
       <ApproachSection />
       <FormatsSection />
