@@ -123,4 +123,58 @@
     pointer-events: none;
     z-index: 1;
   }
+
+  /* Product grid overlay */
+  .product-grid {
+    position: relative;
+  }
+
+  .product-grid::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(hsl(var(--accent-violet) / 0.04) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(var(--accent-violet) / 0.04) 1px, transparent 1px);
+    background-size: 60px 60px;
+    pointer-events: none;
+    z-index: 0;
+    mask-image: radial-gradient(ellipse 80% 60% at 50% 50%, black 20%, transparent 70%);
+    -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 50%, black 20%, transparent 70%);
+  }
+}
+
+/* Section connector glow lines */
+.section-connector {
+  position: relative;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: visible;
+}
+
+.section-connector::before {
+  content: '';
+  position: absolute;
+  width: 1px;
+  height: 100%;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    hsl(var(--accent-violet) / 0.3) 30%,
+    hsl(var(--accent-violet) / 0.5) 50%,
+    hsl(var(--accent-violet) / 0.3) 70%,
+    transparent
+  );
+}
+
+.section-connector::after {
+  content: '';
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: hsl(var(--accent-violet) / 0.6);
+  box-shadow: 0 0 12px hsl(var(--accent-violet) / 0.4), 0 0 24px hsl(var(--accent-violet) / 0.15);
 }
