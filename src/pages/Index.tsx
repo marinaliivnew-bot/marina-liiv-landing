@@ -13,6 +13,7 @@ const Index = () => {
       <NavHeader />
       <HeroSection />
       <SocialProofSection />
+      <WhyDifferentSection />
       <ExpertiseSection />
       <ApproachSection />
       <FormatsSection />
