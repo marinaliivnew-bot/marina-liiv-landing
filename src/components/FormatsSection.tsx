@@ -1,9 +1,9 @@
 const formats = [
-  { step: "01", title: "Концепция и аудит", description: "Анализ текущих процессов, выявление возможностей для AI-интеграции" },
-  { step: "02", title: "Проектирование архитектуры", description: "Разработка структуры решения и технического задания" },
-  { step: "03", title: "Создание прототипа", description: "Быстрая сборка MVP для проверки гипотез" },
-  { step: "04", title: "Сопровождение внедрения", description: "Поддержка команды на этапе запуска и масштабирования" },
-];
+{ step: "01", title: "Концепция и аудит", description: "Анализ текущих процессов, выявление возможностей для AI-интеграции" },
+{ step: "02", title: "Проектирование архитектуры", description: "Разработка структуры решения и технического задания" },
+{ step: "03", title: "Создание прототипа", description: "Быстрая сборка MVP для проверки гипотез" },
+{ step: "04", title: "Сопровождение внедрения", description: "Поддержка команды на этапе запуска и масштабирования" }];
+
 
 const FormatsSection = () => {
   return (
@@ -13,14 +13,14 @@ const FormatsSection = () => {
           <p className="text-sm font-medium uppercase tracking-[0.2em] text-accent-violet">
             Форматы работы
           </p>
-          <h2 className="font-serif-display text-3xl sm:text-4xl text-foreground tracking-tight">
-            Как мы работаем
+          <h2 className="font-serif-display text-3xl sm:text-4xl text-foreground tracking-tight">Как я работаю
+
           </h2>
         </div>
 
         <div className="grid sm:grid-cols-2 gap-x-16 gap-y-12">
-          {formats.map((item, index) => (
-            <div key={index} className="group">
+          {formats.map((item, index) =>
+          <div key={index} className="group">
               <div className="flex items-baseline gap-4 mb-3">
                 <span className="text-2xl font-serif-display text-accent-violet/30 group-hover:text-accent-violet/60 transition-colors">
                   {item.step}
@@ -33,11 +33,11 @@ const FormatsSection = () => {
                 {item.description}
               </p>
             </div>
-          ))}
+          )}
         </div>
       </div>
-    </section>
-  );
+    </section>);
+
 };
 
 export default FormatsSection;
