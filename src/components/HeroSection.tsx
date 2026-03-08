@@ -43,6 +43,7 @@ const BlueprintGrid = () => (
 );
 
 const HeroSection = () => {
+  const { openChat } = useChatContext();
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden grain-overlay"
     style={{
