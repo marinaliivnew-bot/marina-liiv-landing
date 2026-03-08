@@ -1,4 +1,4 @@
-import { createContext, useContext, useState, type ReactNode } from "react";
+import { createContext, useContext, useState, type ReactNode, type FC } from "react";
 
 interface ChatContextType {
   chatOpen: boolean;
