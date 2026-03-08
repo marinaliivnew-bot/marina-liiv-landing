@@ -1,4 +1,5 @@
 import { ArrowRight } from "lucide-react";
+import { useChatContext } from "@/contexts/ChatContext";
 
 const BlueprintGrid = () => (
   <svg
