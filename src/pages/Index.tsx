@@ -7,8 +7,8 @@ import ApproachSection from "@/components/ApproachSection";
 import FormatsSection from "@/components/FormatsSection";
 import FooterSection from "@/components/FooterSection";
 import SectionConnector from "@/components/SectionConnector";
+import DiagnosticCTASection from "@/components/DiagnosticCTASection";
 import ChatWidget from "@/components/ChatWidget";
-import FloatingChatButton from "@/components/FloatingChatButton";
 import { useChatContext } from "@/contexts/ChatContext";
 
 const Index = () => {
@@ -29,8 +29,9 @@ const Index = () => {
       <SectionConnector />
       <FormatsSection />
       <SectionConnector />
+      <DiagnosticCTASection />
+      <SectionConnector />
       <FooterSection />
-      <FloatingChatButton />
       <ChatWidget open={chatOpen} onClose={closeChat} />
     </main>
   );
