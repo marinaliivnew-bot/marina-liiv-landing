@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Menu, X, ArrowRight } from "lucide-react";
+import { Menu, X, ArrowRight, Sparkles } from "lucide-react";
 import { useChatContext } from "@/contexts/ChatContext";
 
 const navLinks = [
@@ -53,13 +53,22 @@ const NavHeader = () => {
             ))}
           </nav>
 
-          <button
-            onClick={openChat}
-            className="hidden md:inline-flex items-center gap-2 px-5 py-2 rounded-md border border-accent-violet/30 text-foreground text-sm font-medium transition-all duration-300 hover:border-accent-violet hover:shadow-glow"
-          >
-            Обсудить проект
-            <ArrowRight className="w-3.5 h-3.5" />
-          </button>
+          <div className="hidden md:flex items-center gap-2">
+            <button
+              onClick={openChat}
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-md border border-accent-violet/30 bg-accent-violet/10 text-foreground text-sm font-medium transition-all duration-300 hover:border-accent-violet hover:bg-accent-violet/20 hover:shadow-glow"
+            >
+              <Sparkles className="w-3.5 h-3.5 text-accent-violet" />
+              Диагностика
+            </button>
+            <button
+              onClick={openChat}
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-md border border-border/40 text-muted-foreground text-sm font-medium transition-all duration-300 hover:text-foreground hover:border-accent-violet/30"
+            >
+              Обсудить проект
+              <ArrowRight className="w-3.5 h-3.5" />
+            </button>
+          </div>
 
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
@@ -85,11 +94,15 @@ const NavHeader = () => {
               </a>
             ))}
             <button
-              onClick={() => {
-                handleClick();
-                openChat();
-              }}
-              className="mt-2 flex items-center justify-center gap-2 px-5 py-3 rounded-md border border-accent-violet/30 text-foreground text-sm font-medium"
+              onClick={() => { handleClick(); openChat(); }}
+              className="mt-2 flex items-center justify-center gap-2 px-5 py-3 rounded-md border border-accent-violet/30 bg-accent-violet/10 text-foreground text-sm font-medium"
+            >
+              <Sparkles className="w-3.5 h-3.5 text-accent-violet" />
+              Диагностика
+            </button>
+            <button
+              onClick={() => { handleClick(); openChat(); }}
+              className="mt-1 flex items-center justify-center gap-2 px-5 py-3 rounded-md border border-border/40 text-muted-foreground text-sm font-medium"
             >
               Обсудить проект
               <ArrowRight className="w-3.5 h-3.5" />
