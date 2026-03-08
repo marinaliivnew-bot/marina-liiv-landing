@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Menu, X, ArrowRight } from "lucide-react";
+import { Menu, X, ArrowRight, Sparkles } from "lucide-react";
 import { useChatContext } from "@/contexts/ChatContext";
 
 const navLinks = [
