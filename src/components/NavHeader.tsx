@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Menu, X, ArrowRight } from "lucide-react";
+import { useChatContext } from "@/contexts/ChatContext";
 
 const navLinks = [
   { label: "Опыт", href: "#experience" },
@@ -11,6 +12,7 @@ const navLinks = [
 const NavHeader = () => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const { openChat } = useChatContext();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -51,15 +53,13 @@ const NavHeader = () => {
             ))}
           </nav>
 
-          <a
-            href="https://t.me/MarinaLiiv"
-            target="_blank"
-            rel="noopener noreferrer"
+          <button
+            onClick={openChat}
             className="hidden md:inline-flex items-center gap-2 px-5 py-2 rounded-md border border-accent-violet/30 text-foreground text-sm font-medium transition-all duration-300 hover:border-accent-violet hover:shadow-glow"
           >
             Обсудить проект
             <ArrowRight className="w-3.5 h-3.5" />
-          </a>
+          </button>
 
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
@@ -84,16 +84,16 @@ const NavHeader = () => {
                 {link.label}
               </a>
             ))}
-            <a
-              href="https://t.me/MarinaLiiv"
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={handleClick}
+            <button
+              onClick={() => {
+                handleClick();
+                openChat();
+              }}
               className="mt-2 flex items-center justify-center gap-2 px-5 py-3 rounded-md border border-accent-violet/30 text-foreground text-sm font-medium"
             >
               Обсудить проект
               <ArrowRight className="w-3.5 h-3.5" />
-            </a>
+            </button>
           </nav>
         </div>
       )}

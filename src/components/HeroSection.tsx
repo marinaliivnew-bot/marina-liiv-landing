@@ -1,4 +1,5 @@
 import { ArrowRight } from "lucide-react";
+import { useChatContext } from "@/contexts/ChatContext";
 
 const BlueprintGrid = () => (
   <svg
@@ -42,6 +43,7 @@ const BlueprintGrid = () => (
 );
 
 const HeroSection = () => {
+  const { openChat } = useChatContext();
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden grain-overlay"
     style={{
@@ -77,12 +79,12 @@ const HeroSection = () => {
           </p>
 
           <div className="pt-2">
-            <a
-              href="#contact"
+            <button
+              onClick={openChat}
               className="group inline-flex items-center gap-3 px-7 py-3.5 rounded-md border border-accent-violet/40 text-foreground font-medium text-sm transition-all duration-300 hover:border-accent-violet hover:shadow-glow hover:bg-accent-violet/5">
               Обсудить проект
               <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5" />
-            </a>
+            </button>
           </div>
         </div>
       </div>
