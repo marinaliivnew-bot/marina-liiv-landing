@@ -10,10 +10,10 @@ const BlueprintGrid = () => (
   >
     {/* Grid lines */}
     {[0, 80, 160, 240, 320, 400, 480, 560].map(x => (
-      <line key={`v${x}`} x1={x} y1="0" x2={x} y2="800" stroke="hsl(210 60% 70%)" strokeWidth="0.5" opacity="0.3" />
+      <line key={`v${x}`} x1={x} y1="0" x2={x} y2="800" stroke="hsl(210 60% 75%)" strokeWidth="0.7" opacity="0.5" />
     ))}
     {[0, 80, 160, 240, 320, 400, 480, 560, 640, 720, 800].map(y => (
-      <line key={`h${y}`} x1="0" y1={y} x2="600" y2={y} stroke="hsl(210 60% 70%)" strokeWidth="0.5" opacity="0.3" />
+      <line key={`h${y}`} x1="0" y1={y} x2="600" y2={y} stroke="hsl(210 60% 75%)" strokeWidth="0.7" opacity="0.5" />
     ))}
 
     {/* Connection lines */}
