@@ -7,8 +7,13 @@ import ApproachSection from "@/components/ApproachSection";
 import FormatsSection from "@/components/FormatsSection";
 import FooterSection from "@/components/FooterSection";
 import SectionConnector from "@/components/SectionConnector";
+import ChatWidget from "@/components/ChatWidget";
+import FloatingChatButton from "@/components/FloatingChatButton";
+import { useChatContext } from "@/contexts/ChatContext";
 
 const Index = () => {
+  const { chatOpen, closeChat } = useChatContext();
+
   return (
     <main className="min-h-screen product-grid">
       <NavHeader />
@@ -25,6 +30,8 @@ const Index = () => {
       <FormatsSection />
       <SectionConnector />
       <FooterSection />
+      <FloatingChatButton />
+      <ChatWidget open={chatOpen} onClose={closeChat} />
     </main>
   );
 };
