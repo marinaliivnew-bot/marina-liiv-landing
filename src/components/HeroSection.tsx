@@ -3,26 +3,26 @@ import { useChatContext } from "@/contexts/ChatContext";
 
 const BlueprintGrid = () => (
   <svg
-    className="absolute right-0 top-0 h-full w-1/2 opacity-[0.35] pointer-events-none hidden lg:block"
+    className="absolute right-0 top-0 h-full w-1/2 opacity-[0.55] pointer-events-none hidden lg:block"
     viewBox="0 0 600 800"
     fill="none"
     preserveAspectRatio="xMaxYMid slice"
   >
     {/* Grid lines */}
     {[0, 80, 160, 240, 320, 400, 480, 560].map(x => (
-      <line key={`v${x}`} x1={x} y1="0" x2={x} y2="800" stroke="hsl(210 60% 70%)" strokeWidth="0.5" opacity="0.3" />
+      <line key={`v${x}`} x1={x} y1="0" x2={x} y2="800" stroke="hsl(210 60% 75%)" strokeWidth="0.7" opacity="0.5" />
     ))}
     {[0, 80, 160, 240, 320, 400, 480, 560, 640, 720, 800].map(y => (
-      <line key={`h${y}`} x1="0" y1={y} x2="600" y2={y} stroke="hsl(210 60% 70%)" strokeWidth="0.5" opacity="0.3" />
+      <line key={`h${y}`} x1="0" y1={y} x2="600" y2={y} stroke="hsl(210 60% 75%)" strokeWidth="0.7" opacity="0.5" />
     ))}
 
     {/* Connection lines */}
-    <line x1="160" y1="240" x2="400" y2="320" stroke="hsl(210 70% 75%)" strokeWidth="1" opacity="0.4" />
-    <line x1="400" y1="320" x2="320" y2="480" stroke="hsl(210 70% 75%)" strokeWidth="1" opacity="0.35" />
-    <line x1="320" y1="480" x2="480" y2="560" stroke="hsl(210 70% 75%)" strokeWidth="1" opacity="0.3" />
-    <line x1="80" y1="400" x2="320" y2="480" stroke="hsl(210 70% 75%)" strokeWidth="1" opacity="0.25" />
-    <line x1="400" y1="320" x2="520" y2="240" stroke="hsl(210 70% 75%)" strokeWidth="1" opacity="0.3" />
-    <line x1="240" y1="160" x2="160" y2="240" stroke="hsl(210 70% 75%)" strokeWidth="1" opacity="0.35" />
+    <line x1="160" y1="240" x2="400" y2="320" stroke="hsl(210 70% 80%)" strokeWidth="1.2" opacity="0.6" />
+    <line x1="400" y1="320" x2="320" y2="480" stroke="hsl(210 70% 80%)" strokeWidth="1.2" opacity="0.55" />
+    <line x1="320" y1="480" x2="480" y2="560" stroke="hsl(210 70% 80%)" strokeWidth="1.2" opacity="0.5" />
+    <line x1="80" y1="400" x2="320" y2="480" stroke="hsl(210 70% 80%)" strokeWidth="1.2" opacity="0.45" />
+    <line x1="400" y1="320" x2="520" y2="240" stroke="hsl(210 70% 80%)" strokeWidth="1.2" opacity="0.5" />
+    <line x1="240" y1="160" x2="160" y2="240" stroke="hsl(210 70% 80%)" strokeWidth="1.2" opacity="0.55" />
 
     {/* Nodes with glow */}
     {[
@@ -35,8 +35,8 @@ const BlueprintGrid = () => (
       { cx: 240, cy: 160, r: 3 },
     ].map((node, i) => (
       <g key={i}>
-        <circle cx={node.cx} cy={node.cy} r={node.r * 3} fill="hsl(210 70% 75%)" opacity="0.08" />
-        <circle cx={node.cx} cy={node.cy} r={node.r} fill="hsl(210 70% 80%)" opacity="0.5" />
+        <circle cx={node.cx} cy={node.cy} r={node.r * 3} fill="hsl(210 70% 80%)" opacity="0.15" />
+        <circle cx={node.cx} cy={node.cy} r={node.r} fill="hsl(210 70% 85%)" opacity="0.7" />
       </g>
     ))}
   </svg>
