@@ -17,12 +17,12 @@ const BlueprintGrid = () => (
     ))}
 
     {/* Connection lines */}
-    <line x1="160" y1="240" x2="400" y2="320" stroke="hsl(210 70% 75%)" strokeWidth="1" opacity="0.4" />
-    <line x1="400" y1="320" x2="320" y2="480" stroke="hsl(210 70% 75%)" strokeWidth="1" opacity="0.35" />
-    <line x1="320" y1="480" x2="480" y2="560" stroke="hsl(210 70% 75%)" strokeWidth="1" opacity="0.3" />
-    <line x1="80" y1="400" x2="320" y2="480" stroke="hsl(210 70% 75%)" strokeWidth="1" opacity="0.25" />
-    <line x1="400" y1="320" x2="520" y2="240" stroke="hsl(210 70% 75%)" strokeWidth="1" opacity="0.3" />
-    <line x1="240" y1="160" x2="160" y2="240" stroke="hsl(210 70% 75%)" strokeWidth="1" opacity="0.35" />
+    <line x1="160" y1="240" x2="400" y2="320" stroke="hsl(210 70% 80%)" strokeWidth="1.2" opacity="0.6" />
+    <line x1="400" y1="320" x2="320" y2="480" stroke="hsl(210 70% 80%)" strokeWidth="1.2" opacity="0.55" />
+    <line x1="320" y1="480" x2="480" y2="560" stroke="hsl(210 70% 80%)" strokeWidth="1.2" opacity="0.5" />
+    <line x1="80" y1="400" x2="320" y2="480" stroke="hsl(210 70% 80%)" strokeWidth="1.2" opacity="0.45" />
+    <line x1="400" y1="320" x2="520" y2="240" stroke="hsl(210 70% 80%)" strokeWidth="1.2" opacity="0.5" />
+    <line x1="240" y1="160" x2="160" y2="240" stroke="hsl(210 70% 80%)" strokeWidth="1.2" opacity="0.55" />
 
     {/* Nodes with glow */}
     {[
