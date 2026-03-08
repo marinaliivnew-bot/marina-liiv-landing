@@ -3,7 +3,7 @@ import { useChatContext } from "@/contexts/ChatContext";
 
 const BlueprintGrid = () => (
   <svg
-    className="absolute right-0 top-0 h-full w-1/2 opacity-[0.35] pointer-events-none hidden lg:block"
+    className="absolute right-0 top-0 h-full w-1/2 opacity-[0.55] pointer-events-none hidden lg:block"
     viewBox="0 0 600 800"
     fill="none"
     preserveAspectRatio="xMaxYMid slice"
