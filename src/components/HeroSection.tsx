@@ -35,8 +35,8 @@ const BlueprintGrid = () => (
       { cx: 240, cy: 160, r: 3 },
     ].map((node, i) => (
       <g key={i}>
-        <circle cx={node.cx} cy={node.cy} r={node.r * 3} fill="hsl(210 70% 75%)" opacity="0.08" />
-        <circle cx={node.cx} cy={node.cy} r={node.r} fill="hsl(210 70% 80%)" opacity="0.5" />
+        <circle cx={node.cx} cy={node.cy} r={node.r * 3} fill="hsl(210 70% 80%)" opacity="0.15" />
+        <circle cx={node.cx} cy={node.cy} r={node.r} fill="hsl(210 70% 85%)" opacity="0.7" />
       </g>
     ))}
   </svg>
