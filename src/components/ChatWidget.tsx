@@ -235,6 +235,23 @@ const ChatWidget = ({ open, onClose }: ChatWidgetProps) => {
               </div>
             </div>
           )}
+          {showContactForm && !contactSubmitted && !loading && (
+            <ChatContactForm
+              messages={messages}
+              onSubmitted={() => {
+                setContactSubmitted(true);
+                setShowContactForm(false);
+                setMessages((prev) => [
+                  ...prev,
+                  {
+                    role: "assistant",
+                    content:
+                      "Спасибо! Марина свяжется с вами в течение одного рабочего дня.",
+                  },
+                ]);
+              }}
+            />
+          )}
         </div>
 
         {/* Input */}
