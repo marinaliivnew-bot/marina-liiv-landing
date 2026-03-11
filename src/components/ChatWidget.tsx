@@ -2,6 +2,7 @@ import { useState, useRef, useEffect, useCallback } from "react";
 import { X, Send, MessageCircle } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import ReactMarkdown from "react-markdown";
+import ChatContactForm from "./ChatContactForm";
 
 interface Message {
   role: "user" | "assistant";
