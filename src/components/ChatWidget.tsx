@@ -138,10 +138,14 @@ const ChatWidget = ({ open, onClose }: ChatWidgetProps) => {
       );
       if (error) throw new Error(error.message);
       if (data?.reply) {
+        const reply = data.reply;
         setMessages((prev) => [
           ...prev,
-          { role: "assistant", content: data.reply },
+          { role: "assistant", content: reply },
         ]);
+        if (isFinalMessage(reply)) {
+          setShowContactForm(true);
+        }
       }
     } catch (err) {
       console.error("Send error:", err);
