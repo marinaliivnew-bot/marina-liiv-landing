@@ -26,12 +26,35 @@ const TypingDots = () => (
   </div>
 );
 
+const FINAL_MESSAGE_PATTERNS = [
+  "следующие шаги",
+  "следующий шаг",
+  "подведём итог",
+  "подведем итог",
+  "резюмируя",
+  "в завершение",
+  "рекомендую вам",
+  "готов предложить",
+  "могу предложить следующее",
+  "свяжитесь со мной",
+  "связаться с мариной",
+  "записаться на",
+  "оставьте свои контакт",
+];
+
+const isFinalMessage = (content: string): boolean => {
+  const lower = content.toLowerCase();
+  return FINAL_MESSAGE_PATTERNS.some((p) => lower.includes(p));
+};
+
 const ChatWidget = ({ open, onClose }: ChatWidgetProps) => {
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
   const [threadId, setThreadId] = useState<string | null>(null);
   const [initialized, setInitialized] = useState(false);
+  const [showContactForm, setShowContactForm] = useState(false);
+  const [contactSubmitted, setContactSubmitted] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLTextAreaElement>(null);
 
