@@ -2,6 +2,7 @@ import { useState, useRef, useEffect, useCallback } from "react";
 import { X, Send, MessageCircle } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import ReactMarkdown from "react-markdown";
+import ChatContactForm from "./ChatContactForm";
 
 interface Message {
   role: "user" | "assistant";
@@ -25,12 +26,35 @@ const TypingDots = () => (
   </div>
 );
 
+const FINAL_MESSAGE_PATTERNS = [
+  "следующие шаги",
+  "следующий шаг",
+  "подведём итог",
+  "подведем итог",
+  "резюмируя",
+  "в завершение",
+  "рекомендую вам",
+  "готов предложить",
+  "могу предложить следующее",
+  "свяжитесь со мной",
+  "связаться с мариной",
+  "записаться на",
+  "оставьте свои контакт",
+];
+
+const isFinalMessage = (content: string): boolean => {
+  const lower = content.toLowerCase();
+  return FINAL_MESSAGE_PATTERNS.some((p) => lower.includes(p));
+};
+
 const ChatWidget = ({ open, onClose }: ChatWidgetProps) => {
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
   const [threadId, setThreadId] = useState<string | null>(null);
   const [initialized, setInitialized] = useState(false);
+  const [showContactForm, setShowContactForm] = useState(false);
+  const [contactSubmitted, setContactSubmitted] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLTextAreaElement>(null);
 
@@ -114,10 +138,14 @@ const ChatWidget = ({ open, onClose }: ChatWidgetProps) => {
       );
       if (error) throw new Error(error.message);
       if (data?.reply) {
+        const reply = data.reply;
         setMessages((prev) => [
           ...prev,
-          { role: "assistant", content: data.reply },
+          { role: "assistant", content: reply },
         ]);
+        if (isFinalMessage(reply)) {
+          setShowContactForm(true);
+        }
       }
     } catch (err) {
       console.error("Send error:", err);
@@ -206,6 +234,23 @@ const ChatWidget = ({ open, onClose }: ChatWidgetProps) => {
                 <TypingDots />
               </div>
             </div>
+          )}
+          {showContactForm && !contactSubmitted && !loading && (
+            <ChatContactForm
+              messages={messages}
+              onSubmitted={() => {
+                setContactSubmitted(true);
+                setShowContactForm(false);
+                setMessages((prev) => [
+                  ...prev,
+                  {
+                    role: "assistant",
+                    content:
+                      "Спасибо! Марина свяжется с вами в течение одного рабочего дня.",
+                  },
+                ]);
+              }}
+            />
           )}
         </div>
 
