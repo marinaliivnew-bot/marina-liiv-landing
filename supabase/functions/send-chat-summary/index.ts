@@ -64,6 +64,12 @@ serve(async (req) => {
       </div>
     `;
 
+    // Determine if contact is an email
+    const isEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(contact);
+
+    const recipients = ["marinaliiv.new@gmail.com"];
+
+    // Send to Marina
     const res = await fetch("https://api.resend.com/emails", {
       method: "POST",
       headers: {
@@ -72,11 +78,42 @@ serve(async (req) => {
       },
       body: JSON.stringify({
         from: "Marina Liiv Site <onboarding@resend.dev>",
-        to: ["marinaliiv.new@gmail.com"],
+        to: recipients,
         subject,
         html,
       }),
     });
+
+    // Send copy to user if they provided an email
+    if (isEmail) {
+      const userHtml = `
+        <div style="font-family:Arial,sans-serif;max-width:640px;margin:0 auto;padding:20px;">
+          <h2 style="color:#1f2937;margin-bottom:4px;">Спасибо за обращение, ${name}!</h2>
+          <p style="color:#6b7280;margin-top:0;margin-bottom:20px;font-size:14px;">
+            Марина свяжется с вами в течение одного рабочего дня.
+          </p>
+          <h3 style="color:#1f2937;margin-bottom:12px;">Ваш диалог</h3>
+          ${chatHtml}
+          <p style="color:#6b7280;font-size:13px;margin-top:24px;border-top:1px solid #e5e7eb;padding-top:16px;">
+            С уважением,<br/>Marina Liiv
+          </p>
+        </div>
+      `;
+
+      await fetch("https://api.resend.com/emails", {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${RESEND_API_KEY}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          from: "Marina Liiv Site <onboarding@resend.dev>",
+          to: [contact],
+          subject: `Резюме вашего диалога — Marina Liiv`,
+          html: userHtml,
+        }),
+      });
+    }
 
     if (!res.ok) {
       const t = await res.text();
