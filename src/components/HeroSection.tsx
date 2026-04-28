@@ -70,8 +70,8 @@ const HeroSection = () => {
           </div>
 
           <h1 className="font-serif-display text-3xl sm:text-4xl lg:text-5xl text-foreground leading-[1.15] tracking-tight">
-            От бизнес-стратегии —{" "}
-            <span className="text-gradient">к&nbsp;работающим AI‑системам</span>
+            Помогаю разобраться, где в&nbsp;вашем бизнесе{" "}
+            <span className="text-gradient">реально нужен AI&nbsp;— и&nbsp;сделать это</span>
           </h1>
 
           <p className="text-base sm:text-lg text-muted-foreground max-w-xl leading-relaxed">
