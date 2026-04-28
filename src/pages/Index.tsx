@@ -25,11 +25,11 @@ const Index = () => {
       <SectionConnector />
       <ExpertiseSection />
       <SectionConnector />
+      <DiagnosticCTASection />
+      <SectionConnector />
       <ApproachSection />
       <SectionConnector />
       <FormatsSection />
-      <SectionConnector />
-      <DiagnosticCTASection />
       <SectionConnector />
       <FooterSection />
       <ChatWidget open={chatOpen} onClose={closeChat} />
