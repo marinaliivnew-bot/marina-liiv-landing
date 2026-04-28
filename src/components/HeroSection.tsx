@@ -75,7 +75,7 @@ const HeroSection = () => {
           </h1>
 
           <p className="text-base sm:text-lg text-muted-foreground max-w-xl leading-relaxed">
-            Я объединяю 15&nbsp;лет лидерства в&nbsp;FMCG-продуктах и&nbsp;управления P&L с&nbsp;практическим проектированием AI‑систем. Сейчас фокусируюсь на&nbsp;создании решений, которые не&nbsp;просто работают технически&nbsp;— а&nbsp;имеют реальный бизнес-смысл.
+            15&nbsp;лет в&nbsp;продуктах и&nbsp;P&amp;L&nbsp;— теперь проектирую AI‑системы. Без хайпа и&nbsp;лишних обещаний.
           </p>
 
           <div className="pt-2">
