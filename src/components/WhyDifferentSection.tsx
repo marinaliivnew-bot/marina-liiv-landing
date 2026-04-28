@@ -25,6 +25,9 @@ const WhyDifferentSection = () => {
           <h2 className="font-serif-display text-3xl sm:text-4xl text-foreground tracking-tight">
             Почему я отличаюсь
           </h2>
+          <p className="text-base sm:text-lg text-muted-foreground leading-relaxed pt-2">
+            Я не&nbsp;пришла в&nbsp;AI из&nbsp;IT. 15&nbsp;лет в&nbsp;Amway: управляла портфелем из&nbsp;150+ продуктов, запускала на&nbsp;международных рынках, отвечала за&nbsp;P&amp;L. Это даёт мне понимание, как бизнес устроен изнутри&nbsp;— и&nbsp;почему одни внедрения работают, а&nbsp;другие нет.
+          </p>
         </div>
 
         <div className="grid md:grid-cols-2 gap-6">
