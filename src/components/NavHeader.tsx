@@ -61,13 +61,13 @@ const NavHeader = () => {
               <Sparkles className="w-3.5 h-3.5 text-accent-violet" />
               Диагностика
             </button>
-            <button
-              onClick={openChat}
+            <a
+              href="#contact"
               className="inline-flex items-center gap-2 px-4 py-2 rounded-md border border-border/40 text-muted-foreground text-sm font-medium transition-all duration-300 hover:text-foreground hover:border-accent-violet/30"
             >
               Обсудить проект
               <ArrowRight className="w-3.5 h-3.5" />
-            </button>
+            </a>
           </div>
 
           <button
@@ -100,13 +100,14 @@ const NavHeader = () => {
               <Sparkles className="w-3.5 h-3.5 text-accent-violet" />
               Диагностика
             </button>
-            <button
-              onClick={() => { handleClick(); openChat(); }}
+            <a
+              href="#contact"
+              onClick={handleClick}
               className="mt-1 flex items-center justify-center gap-2 px-5 py-3 rounded-md border border-border/40 text-muted-foreground text-sm font-medium"
             >
               Обсудить проект
               <ArrowRight className="w-3.5 h-3.5" />
-            </button>
+            </a>
           </nav>
         </div>
       )}
