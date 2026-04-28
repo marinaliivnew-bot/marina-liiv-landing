@@ -4,22 +4,22 @@ const expertise = [
   {
     icon: Bot,
     title: "Архитектура AI‑агентов",
-    description: "Проектирование умных ассистентов и LLM‑решений для бизнеса.",
+    description: "Проектирую AI‑агентов под конкретную задачу — ассистентов, аналитиков, помощников для команды или клиентов.",
   },
   {
     icon: Users,
     title: "Customer Journey",
-    description: "Создание бесшовных сценариев взаимодействия с клиентами.",
+    description: "Выстраиваю путь клиента так, чтобы он был логичным — и чтобы команда не тратила время на ручную работу.",
   },
   {
     icon: Layers,
     title: "Прототипирование",
-    description: "Быстрая сборка MVP и проверка гипотез на реальных данных.",
+    description: "Собираю рабочий прототип за 2–4 недели. Не презентацию — систему, которую можно тестировать.",
   },
   {
     icon: Link,
     title: "Бизнес‑интеграция",
-    description: "Связка «Бизнес — Разработка — Пользователь».",
+    description: "Слежу, чтобы новое решение прижилось: понятно для команды, встроено в процесс, а не висит отдельно.",
   },
 ];
 
@@ -34,6 +34,9 @@ const ExpertiseSection = () => {
           <h2 className="font-serif-display text-3xl sm:text-4xl text-foreground tracking-tight">
             Что я делаю
           </h2>
+          <p className="text-base text-muted-foreground leading-relaxed pt-2">
+            Берусь за&nbsp;задачи, где нужно не&nbsp;просто «прикрутить AI», а&nbsp;понять&nbsp;— зачем, куда и&nbsp;как.
+          </p>
         </div>
 
         <div className="grid sm:grid-cols-2 gap-x-12 gap-y-10">
