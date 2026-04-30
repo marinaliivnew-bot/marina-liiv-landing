@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { Send } from "lucide-react";
-import { supabase } from "@/integrations/supabase/client";
+
+const SEND_SUMMARY_URL =
+  "https://lpqkldwtvalnfhqqiwah.supabase.co/functions/v1/send-chat-summary";
 
 interface ChatContactFormProps {
   messages: { role: "user" | "assistant"; content: string }[];
@@ -21,13 +23,13 @@ const ChatContactForm = ({ messages, onSubmitted }: ChatContactFormProps) => {
     setError("");
 
     try {
-      const { error: fnError } = await supabase.functions.invoke(
-        "send-chat-summary",
-        {
-          body: { name: name.trim(), contact: contact.trim(), messages },
-        }
-      );
-      if (fnError) throw new Error(fnError.message);
+      const res = await fetch(SEND_SUMMARY_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name: name.trim(), contact: contact.trim(), messages }),
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || "Send failed");
       onSubmitted();
     } catch (err) {
       console.error("Submit error:", err);

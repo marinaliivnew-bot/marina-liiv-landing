@@ -1,8 +1,10 @@
 import { useState, useRef, useEffect, useCallback } from "react";
 import { X, Send, MessageCircle } from "lucide-react";
-import { supabase } from "@/integrations/supabase/client";
 import ReactMarkdown from "react-markdown";
 import ChatContactForm from "./ChatContactForm";
+
+const CHAT_URL =
+  "https://lpqkldwtvalnfhqqiwah.supabase.co/functions/v1/chat-assistant";
 
 interface Message {
   role: "user" | "assistant";
@@ -51,7 +53,7 @@ const ChatWidget = ({ open, onClose }: ChatWidgetProps) => {
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
-  const [threadId, setThreadId] = useState<string | null>(null);
+  const [responseId, setResponseId] = useState<string | null>(null);
   const [initialized, setInitialized] = useState(false);
   const [showContactForm, setShowContactForm] = useState(false);
   const [contactSubmitted, setContactSubmitted] = useState(false);
@@ -67,32 +69,23 @@ const ChatWidget = ({ open, onClose }: ChatWidgetProps) => {
     }, 50);
   }, []);
 
-  // Initialize thread and get greeting when opened
+  // Get greeting when opened for the first time
   useEffect(() => {
     if (!open || initialized) return;
 
     const init = async () => {
       setLoading(true);
       try {
-        // Create thread
-        const { data: threadData, error: threadError } =
-          await supabase.functions.invoke("chat-assistant", {
-            body: { action: "create_thread" },
-          });
-        if (threadError || !threadData?.threadId) {
-          throw new Error(threadError?.message || "Failed to create thread");
-        }
-        const tid = threadData.threadId;
-        setThreadId(tid);
-
-        // Run without message to get greeting
-        const { data: greetData, error: greetError } =
-          await supabase.functions.invoke("chat-assistant", {
-            body: { action: "send_message", threadId: tid },
-          });
-        if (greetError) throw new Error(greetError.message);
-        if (greetData?.reply) {
-          setMessages([{ role: "assistant", content: greetData.reply }]);
+        const res = await fetch(CHAT_URL, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ message: "Привет" }),
+        });
+        const data = await res.json();
+        if (!res.ok) throw new Error(data.error || "Init failed");
+        if (data.reply) {
+          setMessages([{ role: "assistant", content: data.reply }]);
+          setResponseId(data.response_id ?? null);
         }
         setInitialized(true);
       } catch (err) {
@@ -123,27 +116,30 @@ const ChatWidget = ({ open, onClose }: ChatWidgetProps) => {
 
   const sendMessage = async () => {
     const text = input.trim();
-    if (!text || !threadId || loading) return;
+    if (!text || loading) return;
 
     setInput("");
     setMessages((prev) => [...prev, { role: "user", content: text }]);
     setLoading(true);
 
     try {
-      const { data, error } = await supabase.functions.invoke(
-        "chat-assistant",
-        {
-          body: { action: "send_message", threadId, message: text },
-        }
-      );
-      if (error) throw new Error(error.message);
-      if (data?.reply) {
-        const reply = data.reply;
+      const body: Record<string, string> = { message: text };
+      if (responseId) body.previous_response_id = responseId;
+
+      const res = await fetch(CHAT_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(body),
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || "Send failed");
+      if (data.reply) {
+        setResponseId(data.response_id ?? null);
         setMessages((prev) => [
           ...prev,
-          { role: "assistant", content: reply },
+          { role: "assistant", content: data.reply },
         ]);
-        if (isFinalMessage(reply)) {
+        if (isFinalMessage(data.reply)) {
           setShowContactForm(true);
         }
       }
