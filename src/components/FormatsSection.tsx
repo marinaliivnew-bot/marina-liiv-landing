@@ -13,7 +13,7 @@ const FormatsSection = () => {
           <p className="text-sm font-medium uppercase tracking-[0.2em] text-accent-violet">
             Форматы работы
           </p>
-          <h2 className="font-serif-display text-3xl sm:text-4xl text-foreground tracking-tight">Как я работаю
+          <h2 className="font-serif-display text-3xl sm:text-4xl text-foreground tracking-tight">Этапы работы
 
           </h2>
         </div>
