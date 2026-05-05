@@ -1,5 +1,6 @@
 import { ArrowRight } from "lucide-react";
 import { useChatContext } from "@/contexts/ChatContext";
+import FloatingOrbs from "./FloatingOrbs";
 
 const BlueprintGrid = () => (
   <svg
@@ -61,6 +62,8 @@ const HeroSection = () => {
       }} />
 
       <BlueprintGrid />
+
+      <FloatingOrbs />
 
       <div className="container relative z-10 mx-auto px-6 lg:px-8 max-w-6xl">
         <div className="max-w-3xl space-y-8">
