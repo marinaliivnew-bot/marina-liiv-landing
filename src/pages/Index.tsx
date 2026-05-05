@@ -36,7 +36,7 @@ const Index = () => {
           className="absolute w-[600px] h-[600px] rounded-full transition-[left,top] duration-75 ease-linear will-change-[left,top]"
           style={{
             background:
-              "radial-gradient(circle, hsl(263 86% 76% / 0.06), transparent 70%)",
+              "radial-gradient(circle, hsl(263 86% 76% / 0.15), transparent 70%)",
             left: mousePos.x,
             top: mousePos.y,
             transform: "translate(-50%, -50%)",

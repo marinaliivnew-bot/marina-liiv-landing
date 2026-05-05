@@ -1,27 +1,27 @@
 const orbs = [
   {
-    size: 400,
-    top: "10%",
-    right: "-5%",
+    size: 500,
+    top: "5%",
+    right: "-10%",
     delay: "0s",
     duration: "8s",
-    opacity: 0.08,
+    opacity: 0.2,
   },
   {
-    size: 300,
-    bottom: "15%",
-    left: "-8%",
+    size: 350,
+    bottom: "10%",
+    left: "-10%",
     delay: "2s",
     duration: "10s",
-    opacity: 0.06,
+    opacity: 0.15,
   },
   {
     size: 200,
-    top: "40%",
-    right: "15%",
+    top: "35%",
+    right: "20%",
     delay: "4s",
     duration: "7s",
-    opacity: 0.05,
+    opacity: 0.12,
   },
 ];
 
