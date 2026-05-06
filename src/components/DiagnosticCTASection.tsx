@@ -15,7 +15,7 @@ const DiagnosticCTASection = () => {
       {/* Background glow */}
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-accent-violet/[0.04] to-transparent" />
       <div
-        className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] rounded-full opacity-[0.07]"
+        className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[500px] rounded-full opacity-[0.08]"
         style={{
           background:
             "radial-gradient(ellipse, hsl(263 86% 76%), transparent 70%)",
@@ -37,20 +37,31 @@ const DiagnosticCTASection = () => {
           </h2>
 
           <p className="text-base text-muted-foreground leading-relaxed">
-            Я&nbsp;встроила в&nbsp;этот сайт диагностического ассистента. Он&nbsp;задаёт вопросы про ваш бизнес и&nbsp;за&nbsp;15–20 минут помогает понять, где AI реально даст эффект&nbsp;— а&nbsp;где не&nbsp;нужен. Без регистрации, без обязательств.
+            Я&nbsp;встроила в&nbsp;этот сайт диагностического ассистента.
+            Он&nbsp;задаёт вопросы про ваш бизнес и&nbsp;за&nbsp;15–20 минут
+            помогает понять, где AI реально даст эффект&nbsp;— а&nbsp;где
+            не&nbsp;нужен. Без регистрации, без обязательств.
           </p>
         </div>
 
+        {/* Glassmorphism карточки */}
         <div className="grid sm:grid-cols-3 gap-5 mt-12">
           {steps.map((step, i) => (
             <div
               key={i}
-              className="p-6 rounded-lg bg-surface-alt/50 border border-border/30 transition-colors duration-300 hover:border-accent-violet/30"
+              className="group relative p-6 rounded-xl backdrop-blur-xl bg-white/5 border border-white/10 transition-all duration-500 hover:border-accent-violet/40 hover:bg-white/[0.08]"
             >
-              <div className="text-xs font-medium uppercase tracking-[0.2em] text-accent-violet mb-3">
-                Шаг {i + 1}
+              {/* Subtle glass shine on hover */}
+              <div className="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none bg-gradient-to-br from-white/[0.04] via-transparent to-transparent" />
+
+              <div className="relative z-10">
+                <div className="text-xs font-medium uppercase tracking-[0.2em] text-accent-violet mb-3">
+                  Шаг {i + 1}
+                </div>
+                <p className="text-sm text-foreground/90 leading-relaxed">
+                  {step}
+                </p>
               </div>
-              <p className="text-sm text-foreground leading-relaxed">{step}</p>
             </div>
           ))}
         </div>
