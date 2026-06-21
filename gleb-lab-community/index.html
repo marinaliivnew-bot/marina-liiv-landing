@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="AI-лаборатория — закрытое сообщество для продвинутых пользователей ИИ, которые строят рабочие продукты, защищают дипломные проекты и учатся в сильной среде.">
+  <title>AI-лаборатория — Глеб Кудрявцев</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,300;0,14..32,400;0,14..32,500;0,14..32,600;0,14..32,700;1,14..32,400&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root { --black: #0a0a0a; --white: #ffffff; --muted: #6b6b6b; --border: #e5e5e5; --bg-subtle: #fafafa; --text: #2a2a2a; }
+    html { font-size: 16px; scroll-behavior: smooth; }
+    body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; color: var(--black); background: var(--white); line-height: 1.6; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+    nav { position: sticky; top: 0; background: rgba(255,255,255,0.95); backdrop-filter: blur(8px); border-bottom: 1px solid var(--border); z-index: 100; }
+    .nav-inner { display: flex; align-items: center; justify-content: space-between; padding: 18px 0; }
+    .nav-logo { font-size: 15px; font-weight: 600; color: var(--black); text-decoration: none; letter-spacing: -0.02em; }
+    .nav-links { display: flex; gap: 28px; list-style: none; align-items: center; }
+    .nav-links a { font-size: 14px; color: var(--muted); text-decoration: none; transition: color 0.15s; }
+    .nav-links a:hover, .nav-links a.active { color: var(--black); }
+    .nav-links a.active { font-weight: 500; }
+    .hero { padding: 100px 0 88px; border-bottom: 1px solid var(--border); }
+    .hero-grid { display: grid; grid-template-columns: minmax(0, 1fr) 360px; gap: 80px; align-items: end; }
+    .eyebrow, .label { font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
+    .eyebrow { display: inline-block; margin-bottom: 28px; }
+    .label { margin-bottom: 40px; }
+    .hero h1 { font-size: clamp(38px, 5.5vw, 62px); font-weight: 700; letter-spacing: -0.035em; line-height: 1.07; max-width: 760px; margin-bottom: 28px; }
+    .hero-lead { font-size: 18px; color: var(--text); max-width: 540px; line-height: 1.65; margin-bottom: 44px; }
+    .hero-actions { display: flex; gap: 22px; align-items: center; flex-wrap: wrap; }
+    .trace-panel, .mono-block { border: 1px solid var(--border); font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; font-size: 12px; color: var(--text); }
+    .trace-panel { background: var(--bg-subtle); padding: 24px; line-height: 1.75; }
+    .trace-title, .trace-line { display: flex; justify-content: space-between; gap: 18px; }
+    .trace-title { color: var(--black); margin-bottom: 18px; }
+    .trace-line { border-top: 1px solid var(--border); padding: 8px 0; }
+    .trace-ok { color: var(--black); font-weight: 600; }
+    .link-arrow { display: inline-flex; align-items: center; gap: 8px; font-size: 15px; font-weight: 500; color: var(--black); text-decoration: none; border-bottom: 1.5px solid var(--black); padding-bottom: 2px; transition: gap 0.2s ease; }
+    .link-arrow:hover { gap: 14px; }
+    .text-link { color: var(--muted); text-decoration: none; font-size: 15px; border-bottom: 1px solid var(--border); padding-bottom: 2px; }
+    .text-link:hover { color: var(--black); border-color: var(--black); }
+    section { padding: 88px 0; border-bottom: 1px solid var(--border); }
+    section:last-of-type { border-bottom: none; }
+    h2 { font-size: clamp(26px, 3.8vw, 40px); font-weight: 700; letter-spacing: -0.03em; line-height: 1.12; margin-bottom: 18px; }
+    h3 { font-size: 18px; font-weight: 600; letter-spacing: -0.015em; line-height: 1.3; margin-bottom: 10px; }
+    p { color: var(--text); line-height: 1.7; }
+    .blockquote { font-size: clamp(20px, 2.8vw, 30px); font-weight: 600; letter-spacing: -0.02em; line-height: 1.3; border-left: 2px solid var(--black); padding-left: 24px; margin: 56px 0 0; color: var(--black); }
+    .split-table, .three-col, .format-grid, .wide-grid, .metric-row { display: grid; gap: 1px; background: var(--border); border: 1px solid var(--border); margin-top: 44px; }
+    .split-table, .format-grid { grid-template-columns: 1fr 1fr; }
+    .three-col { grid-template-columns: repeat(3, 1fr); }
+    .wide-grid { grid-template-columns: 1.2fr 1fr; }
+    .metric-row { grid-template-columns: repeat(4, 1fr); }
+    .split-col, .format-cell, .wide-cell, .card, .metric { background: var(--white); }
+    .split-col, .wide-cell { padding: 40px 36px; }
+    .format-cell, .card { padding: 36px 32px; }
+    .metric { padding: 28px 24px; }
+    .muted-bg { background: var(--bg-subtle); }
+    .check-list, .arrow-list, .price-includes { list-style: none; display: flex; flex-direction: column; }
+    .check-list { gap: 13px; margin-top: 20px; }
+    .check-list li { font-size: 15px; color: var(--text); padding-left: 20px; position: relative; line-height: 1.5; }
+    .check-list.no li::before { content: '—'; position: absolute; left: 0; color: #bbb; }
+    .check-list.yes li::before { content: '✓'; position: absolute; left: 0; color: var(--black); font-weight: 700; }
+    .arrow-list { gap: 14px; }
+    .arrow-list li, .price-includes li { display: flex; align-items: flex-start; gap: 12px; font-size: 15px; color: var(--text); line-height: 1.55; }
+    .arrow-list li::before, .price-includes li::before { content: '→'; flex-shrink: 0; color: var(--black); font-weight: 500; margin-top: 0.05em; }
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: start; }
+    .card-num { font-size: 12px; font-weight: 600; letter-spacing: 0.05em; color: #bbb; margin-bottom: 16px; }
+    .mono-block { margin-top: 28px; background: var(--white); padding: 22px 24px; line-height: 1.8; overflow-x: auto; }
+    .metric strong { display: block; font-size: 28px; line-height: 1; letter-spacing: -0.03em; margin-bottom: 10px; }
+    .metric span { display: block; font-size: 13px; color: var(--muted); line-height: 1.45; }
+    .side-box { border: 1px solid var(--border); padding: 36px; }
+    .side-box .label { margin-bottom: 20px; }
+    .side-note { margin-top: 20px; font-size: 13px; color: var(--muted); line-height: 1.65; }
+    .format-cell .sub { font-size: 13px; color: var(--muted); margin-bottom: 20px; }
+    .pricing-wrap { display: grid; grid-template-columns: auto 1fr; gap: 72px; align-items: start; margin-top: 44px; }
+    .price-box { border: 1.5px solid var(--black); padding: 44px 40px; min-width: 340px; }
+    .price-amount { font-size: 52px; font-weight: 700; letter-spacing: -0.04em; line-height: 1; margin-bottom: 6px; }
+    .price-sub { font-size: 14px; color: var(--muted); margin-bottom: 36px; }
+    .price-includes { gap: 11px; margin-bottom: 36px; }
+    .price-includes li { font-size: 14px; gap: 10px; line-height: 1.5; }
+    .btn { display: inline-flex; align-items: center; gap: 8px; background: var(--black); color: var(--white); font-size: 14px; font-weight: 500; padding: 13px 24px; text-decoration: none; transition: opacity 0.15s, gap 0.2s; width: 100%; justify-content: center; }
+    .btn:hover { opacity: 0.82; gap: 14px; }
+    .steps { max-width: 640px; margin-top: 44px; }
+    .step { display: grid; grid-template-columns: 52px 1fr; gap: 20px; padding: 28px 0; border-top: 1px solid var(--border); }
+    .step:last-child { border-bottom: 1px solid var(--border); }
+    .step-n { font-size: 12px; font-weight: 600; letter-spacing: 0.05em; color: #bbb; padding-top: 3px; }
+    .step h3 { margin-bottom: 6px; }
+    .step p { font-size: 15px; }
+    .faq { max-width: 720px; margin-top: 44px; }
+    details { border-top: 1px solid var(--border); }
+    details:last-child { border-bottom: 1px solid var(--border); }
+    summary { display: flex; justify-content: space-between; align-items: center; padding: 22px 0; cursor: pointer; list-style: none; font-size: 16px; font-weight: 500; color: var(--black); gap: 16px; user-select: none; }
+    summary::-webkit-details-marker { display: none; }
+    .faq-icon { flex-shrink: 0; width: 20px; height: 20px; position: relative; }
+    .faq-icon::before, .faq-icon::after { content: ''; position: absolute; background: var(--black); transition: transform 0.2s, opacity 0.2s; }
+    .faq-icon::before { width: 12px; height: 1.5px; top: 9px; left: 4px; }
+    .faq-icon::after { width: 1.5px; height: 12px; top: 4px; left: 9px; }
+    details[open] .faq-icon::after { transform: rotate(90deg); opacity: 0; }
+    .faq-body { padding-bottom: 24px; font-size: 15px; color: var(--text); line-height: 1.7; max-width: 600px; }
+    .cta-bottom { padding: 100px 0; border-top: 1px solid var(--border); border-bottom: none; }
+    .cta-bottom h2 { margin-bottom: 16px; }
+    .cta-bottom .lead { font-size: 17px; color: var(--text); max-width: 480px; margin-bottom: 40px; }
+    footer { padding: 36px 0; border-top: 1px solid var(--border); }
+    .footer-inner { display: flex; justify-content: space-between; align-items: center; }
+    .footer-copy, .footer-links a { font-size: 13px; color: var(--muted); }
+    .footer-links { display: flex; gap: 20px; }
+    .footer-links a { text-decoration: none; }
+    .footer-links a:hover { color: var(--black); }
+    @media (max-width: 860px) { .nav-links { display: none; } .hero-grid, .two-col, .format-grid, .split-table, .wide-grid { grid-template-columns: 1fr; } .three-col { grid-template-columns: 1fr; } .metric-row { grid-template-columns: 1fr 1fr; } .pricing-wrap { grid-template-columns: 1fr; gap: 40px; } .price-box { min-width: 0; padding: 32px 24px; } .price-amount { font-size: 40px; } section { padding: 64px 0; } .hero { padding: 72px 0 60px; } .footer-inner { flex-direction: column; gap: 16px; align-items: flex-start; } }
+    @media (max-width: 520px) { .metric-row { grid-template-columns: 1fr; } .container { padding: 0 18px; } .split-col, .format-cell, .wide-cell, .card { padding: 28px 22px; } }
+  </style>
+</head>
+<body>
+<nav><div class="container"><div class="nav-inner"><a href="https://glebkudr.com" class="nav-logo">Глеб Кудрявцев</a><ul class="nav-links"><li><a href="https://glebkudr.com">Главная</a></li><li><a href="https://glebkudr.com/courses">Курсы</a></li><li><a href="#" class="active">AI-сообщество</a></li><li><a href="https://glebkudr.com/b2b">B2B</a></li><li><a href="https://glebkudr.com/projects">Проекты</a></li><li><a href="https://glebkudr.com/blog">Блог</a></li></ul></div></div></nav>
+<div class="hero"><div class="container"><div class="hero-grid"><div><span class="eyebrow">AI-сообщество · вход через собеседование</span><h1>Лаборатория для тех, кто уже строит с ИИ.</h1><p class="hero-lead">Закрытая среда для продвинутых пользователей нейросетей: каждую неделю разбираем практику, собираем рабочие системы и доводим личный AI-проект до защиты.</p><div class="hero-actions"><a href="#apply" class="link-arrow">Подать заявку →</a><a href="#program" class="text-link">Посмотреть формат</a></div></div><div class="trace-panel" aria-label="Статус лаборатории"><div class="trace-title"><span>lab intake</span><span class="trace-ok">open</span></div><div class="trace-line"><span>level</span><span>advanced users</span></div><div class="trace-line"><span>entry</span><span>interview</span></div><div class="trace-line"><span>rhythm</span><span>weekly practice</span></div><div class="trace-line"><span>output</span><span>diploma project</span></div><div class="trace-line"><span>price</span><span>10k / month + build</span></div></div></div></div></div>
+<section><div class="container"><p class="label">Зачем это нужно</p><div class="two-col"><div><h2>После первых побед с ИИ начинается плато</h2><p style="margin-top:16px;font-size:16px;">Продвинутые пользователи уже не покупают обещание “научим пользоваться ChatGPT”. Они упираются в другое: как выбрать правильную задачу, собрать систему, встроить её в процесс, не утонуть в инструментах и получить честное ревью от людей, которые тоже что-то строят.</p><p style="margin-top:14px;font-size:16px;">Поэтому лаборатория продаёт не контент. Она продаёт среду, ритм и давление результата: у каждого есть проект, публичный прогресс и обязательство приносить пользу группе.</p></div><div class="side-box"><p class="label">Гипотеза продукта</p><ul class="arrow-list"><li>Лучшие участники приходят не “учиться”, а ускорять свой проект</li><li>Собеседование повышает ценность сообщества сильнее, чем открытая продажа</li><li>Волонтёрство превращает участников в соавторов, а не потребителей</li><li>Формат диплома создаёт видимый результат и внутренний статус</li></ul></div></div><div class="metric-row"><div class="metric"><strong>1</strong><span>дипломный проект у каждого участника</span></div><div class="metric"><strong>7 дней</strong><span>между разбором и следующей итерацией</span></div><div class="metric"><strong>6 мес.</strong><span>максимум до собственного выступления</span></div><div class="metric"><strong>10k ₽</strong><span>в месяц за активное членство</span></div></div></div></section>
+<section><div class="container"><p class="label">Для кого</p><h2>Быстрый фильтр</h2><div class="split-table"><div class="split-col muted-bg"><h3 style="color:var(--muted);">Это не для вас</h3><ul class="check-list no"><li>Вы только начинаете разбираться в ChatGPT</li><li>Вы хотите смотреть контент, а не создавать</li><li>Вам нужен ещё один курс с домашними заданиями</li><li>У вас нет задачи, над которой вы сейчас работаете</li></ul></div><div class="split-col"><h3>Это для вас</h3><ul class="check-list yes"><li>Вы строите AI-агентов, пайплайны, LLM-продукты</li><li>Вам нужна среда с равными, а не ещё одна аудитория</li><li>Вы готовы давать, а не только брать</li><li>Есть реальная задача, которую вы хотите решить и защитить</li></ul></div></div></div></section>
+<section><div class="container"><p class="label">Концепция</p><div class="two-col"><div><h2>Вы — студент<br>лаборатории</h2><p style="margin-top:16px;font-size:16px;">Не подписчик. Не зритель. Студент.</p><p style="margin-top:14px;font-size:16px;">С первого дня вы работаете над дипломным проектом — реальной задачей, которую решаете с помощью ИИ. Что-то, что будет работать после того, как вы выйдете из встречи.</p><p style="margin-top:14px;font-size:16px;">Остальные участники — источник обратной связи, идей и коллаборации. Раз в полгода вы выступаете спикером: защищаете прогресс перед сообществом.</p></div><div class="side-box"><p class="label">Дипломный проект — это</p><ul class="arrow-list"><li>AI-агент для вашего бизнеса или конкретной задачи</li><li>LLM-продукт, интегрированный в реальный процесс</li><li>Автоматизированный пайплайн, который меняет как вы работаете</li><li>Исследование нового инструмента с выводами для сообщества</li></ul><p class="side-note">Не домашнее задание и не кейс для резюме.<br>Реальная система, которую вы строите и защищаете.</p></div></div><div class="blockquote">AI — инструмент, результат — система.</div></div></section>
+<section id="program"><div class="container"><p class="label">Формат</p><h2>Программа держится<br>на трёх типах недель</h2><div class="format-grid"><div class="format-cell"><h3>Практика</h3><p class="sub">Один из трёх форматов каждую неделю</p><ul class="arrow-list"><li><strong>Тема</strong> — архитектура агентов, RAG, evals, мультимодальность, безопасность, локальные модели</li><li><strong>Мастер-класс</strong> — собираем руками, разбираем стек, фиксируем промпты и спецификацию</li><li><strong>Гость</strong> — практик показывает, как ИИ уже работает в бизнесе, продукте или разработке</li></ul></div><div class="format-cell"><h3>Проект</h3><p class="sub">Каждая неделя должна двигать диплом</p><ul class="arrow-list"><li>Формулируем задачу, критерии успеха и ограничения</li><li>Собираем прототип, тестируем на реальных данных, показываем diff</li><li>Получаем ревью от участников и Глеба, выбираем следующую итерацию</li><li>Раз в 6 месяцев защищаем результат как спикер лаборатории</li></ul></div></div><div class="mono-block">$ diploma/<br>&gt; problem.md&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# какая боль и для кого<br>&gt; spec.md&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# входы, выходы, критерии успеха<br>&gt; prototype/&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# агент, пайплайн или продукт<br>&gt; review.log&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# решения, риски, следующие шаги<br>&gt; demo.link&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# что можно открыть и проверить</div></div></section>
+<section><div class="container"><p class="label">Что можно строить</p><h2>Не абстрактные домашки,<br>а рабочие направления</h2><div class="wide-grid"><div class="wide-cell"><h3>Треки дипломных проектов</h3><ul class="arrow-list" style="margin-top:22px;"><li><strong>Рабочий AI-агент</strong> для повторяемой задачи: продажи, найм, аналитика, документы, поддержка</li><li><strong>Внутренний copilot</strong> для команды: база знаний, поиск, черновики, контроль качества</li><li><strong>Вайбкодинг-продукт</strong>: сайт, бот, приложение или интеграция, которую можно показать пользователям</li><li><strong>Исследование инструмента</strong>: честный тест нового стека, модели или подхода с выводами для практиков</li></ul></div><div class="wide-cell" style="background:var(--bg-subtle);"><h3>Что считается результатом</h3><ul class="arrow-list" style="margin-top:22px;"><li>Есть пользователь или процесс, для которого это сделано</li><li>Понятны входы, выходы, метрики и ограничения</li><li>Можно открыть демо, документ, репозиторий или сценарий работы</li><li>После защиты понятно, что улучшать следующей итерацией</li></ul></div></div></div></section>
+<section style="background:var(--bg-subtle);padding:88px 0;"><div class="container"><p class="label">Принципы</p><h2>Как мы устроены</h2><div class="three-col"><div class="card" style="background:var(--bg-subtle);"><div class="card-num">01</div><h3>Собеседование на входе</h3><p style="font-size:15px;">Качество среды важнее размера. Каждый новый участник проходит короткое интервью: проверяем уровень работы с ИИ, проект, мотивацию и готовность быть полезным группе.</p></div><div class="card" style="background:var(--bg-subtle);"><div class="card-num">02</div><h3>Вовлечённость как норма</h3><p style="font-size:15px;">Пассивность — исключение, не режим по умолчанию. Сообщество живёт за счёт того, что каждый приносит что-то, а не только забирает.</p></div><div class="card" style="background:var(--bg-subtle);"><div class="card-num">03</div><h3>Строим под общим брендом</h3><p style="font-size:15px;">Участники не просто учатся — они соавторы. Вместе создаём контент, инструменты, ивенты под флагом лаборатории.</p></div></div><div class="mono-block" style="background:var(--bg-subtle);">participation contract<br>01. приходить с вопросами и прогрессом<br>02. давать ревью чужим проектам<br>03. брать роль в развитии сообщества<br>04. раз в 6 месяцев выступать с результатом<br>05. если сейчас нет ресурса — переходить в пассивный режим с доплатой</div></div></section>
+<section><div class="container"><p class="label">Стоимость</p><h2>Членство в лаборатории</h2><div class="pricing-wrap"><div class="price-box"><div class="price-amount">10 000 ₽</div><div class="price-sub">в месяц + волонтёрство</div><ul class="price-includes"><li>Еженедельные встречи: разборы, мастер-классы, гости</li><li>Дипломный проект с обратной связью сообщества</li><li>База знаний и записи всех встреч</li><li>Нетворк с практиками на вашем уровне</li><li>Возможность коллаборации на проектах лаборатории</li></ul><a href="#apply" class="btn">Подать заявку →</a></div><div><h3>Что включает волонтёрство</h3><p style="font-size:15px;margin-top:12px;margin-bottom:24px;">Мы строим сообщество вместе. Часть участия — это ваше время и руки:</p><ul class="arrow-list"><li>Помощь в подготовке и проведении офлайн-ивентов</li><li>Создание материалов под брендом лаборатории</li><li>Менторство входящих участников</li></ul><p style="margin-top:24px;font-size:14px;color:var(--muted);line-height:1.65;">Объём волонтёрства обговаривается индивидуально и не превращается в полную занятость.</p><p style="margin-top:14px;font-size:14px;color:var(--muted);line-height:1.65;">Пассивное участие (без волонтёрства и активных обязательств) доступно с доплатой — обсуждаем при собеседовании.</p></div></div></div></section>
+<section id="apply"><div class="container"><p class="label">Как войти</p><h2>Четыре шага</h2><div class="steps"><div class="step"><div class="step-n">01</div><div><h3>Оставьте заявку</h3><p>Расскажите о себе и своём проекте. Занимает 5 минут.</p></div></div><div class="step"><div class="step-n">02</div><div><h3>Собеседование</h3><p>30-минутный разговор — хотим понять, кто вы, что строите и зачем вам лаборатория.</p></div></div><div class="step"><div class="step-n">03</div><div><h3>Решение за 3 дня</h3><p>Если подходим друг другу — добро пожаловать. Если нет — честно скажем почему.</p></div></div><div class="step"><div class="step-n">04</div><div><h3>Онбординг</h3><p>Знакомство с участниками, обзор текущих дипломных проектов, выбор своего направления.</p></div></div></div><div style="margin-top:48px;"><a href="https://t.me/glebkudr" class="link-arrow" target="_blank">Написать напрямую →</a></div></div></section>
+<section><div class="container"><p class="label">Вопросы</p><h2>Часто спрашивают</h2><div class="faq"><details open><summary>Что такое дипломный проект и можно ли его сменить?<span class="faq-icon"></span></summary><div class="faq-body">Дипломный проект — ваша реальная задача, которую вы решаете с помощью ИИ. Не идея на слайде, а работающая система. Направление можно скорректировать в процессе — главное, что к защите у вас есть что показать.</div></details><details><summary>Нужно ли уметь программировать?<span class="faq-icon"></span></summary><div class="faq-body">Нет строгого требования. Но вы должны уметь строить с ИИ — это может быть вайбкодинг, настройка агентов, дизайн пайплайна, работа с API. Если единственный инструмент — чат с ChatGPT, пока рано.</div></details><details><summary>Что означает «пассивное участие с доплатой»?<span class="faq-icon"></span></summary><div class="faq-body">Если вы временно не можете тянуть активные обязательства — встречи, волонтёрство, выступления — можно остаться в лаборатории с фиксированной доплатой. Детали обсуждаем при собеседовании.</div></details><details><summary>Встречи онлайн или офлайн?<span class="faq-icon"></span></summary><div class="faq-body">Еженедельные встречи — онлайн. Митапы и ивенты — офлайн, периодически. Место и формат анонсируются внутри сообщества.</div></details><details><summary>Сколько участников в лаборатории?<span class="faq-icon"></span></summary><div class="faq-body">Намеренно небольшое сообщество — качество среды важнее охвата. Конкретное число зависит от потока заявок и нашей способности поддерживать уровень.</div></details><details><summary>Можно ли выйти в любой момент?<span class="faq-icon"></span></summary><div class="faq-body">Да, членство помесячное. Оплачиваете следующий месяц — остаётесь. Условия обсуждаем на онбординге.</div></details></div></div></section>
+<section class="cta-bottom"><div class="container"><h2>Готовы строить?</h2><p class="lead">Если у вас есть проект, уровень и желание работать в сильной среде — оставьте заявку. Собеседование ни к чему не обязывает.</p><a href="https://t.me/glebkudr" class="btn" style="display:inline-flex;width:auto;" target="_blank">Написать в Telegram →</a></div></section>
+<footer><div class="container"><div class="footer-inner"><span class="footer-copy">© 2026 Глеб Кудрявцев</span><div class="footer-links"><a href="https://glebkudr.com/privacy">Политика обработки данных</a><a href="https://glebkudr.com/offer">Публичная оферта</a></div></div></div></footer>
+</body>
+</html>
