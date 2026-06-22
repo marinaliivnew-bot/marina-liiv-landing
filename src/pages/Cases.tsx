@@ -1,416 +1,267 @@
-import { ExternalLink, Send, Download, Sparkles, CheckCircle2 } from "lucide-react";
+import {
+  BrainCircuit,
+  CheckCircle2,
+  Download,
+  ExternalLink,
+  FileSearch,
+  FlaskConical,
+  Send,
+  ShieldCheck,
+  Sparkles,
+  Workflow,
+} from "lucide-react";
 import NavHeader from "@/components/NavHeader";
 import AnimatedSection from "@/components/AnimatedSection";
 import ChatWidget from "@/components/ChatWidget";
 import SectionConnector from "@/components/SectionConnector";
 import { useChatContext } from "@/contexts/ChatContext";
 
-const CasesHero = () => (
-  <section
-    className="relative pt-32 pb-20 lg:pt-40 lg:pb-28 grain-overlay overflow-hidden"
-    style={{ background: "linear-gradient(135deg, #4A3A73 0%, #5B4690 50%, #4A3A73 100%)" }}
-  >
-    <div
-      className="absolute inset-0 opacity-[0.08]"
-      style={{
-        backgroundImage: `repeating-linear-gradient(
-          -45deg,
-          transparent,
-          transparent 80px,
-          hsl(260 40% 96% / 0.15) 80px,
-          hsl(260 40% 96% / 0.15) 81px
-        )`,
-      }}
-    />
-    <div className="container relative z-10 mx-auto px-6 lg:px-8 max-w-6xl">
-      <div className="max-w-3xl space-y-6">
-        <p className="text-sm font-medium uppercase tracking-[0.2em] text-accent-soft">
-          Портфолио
-        </p>
-        <h1 className="font-serif-display text-3xl sm:text-4xl lg:text-5xl text-foreground leading-[1.15] tracking-tight">
-          AI-кейсы, продукты и прототипы
-        </h1>
-        <p className="text-base sm:text-lg text-muted-foreground max-w-xl leading-relaxed">
-          Здесь собраны проекты, где задача была не "применить нейросеть", а разобраться в контексте,
-          спроектировать логику, собрать рабочий артефакт и довести его до состояния "можно показывать".
-        </p>
-        <p className="text-sm text-accent-soft/70 tracking-wide">
-          Product thinking · AI logic · Vibe-coding · Expert data · QA · Handover
-        </p>
-      </div>
-    </div>
-  </section>
-);
-
-const steps = [
-  {
-    num: "01",
-    title: "Разобраться в задаче",
-    desc: "Найти настоящую потребность, аудиторию, ограничения и критерии результата.",
-  },
-  {
-    num: "02",
-    title: "Спроектировать AI-логику",
-    desc: "Описать сценарий, роль агента, данные, границы ответственности и риски галлюцинаций.",
-  },
-  {
-    num: "03",
-    title: "Собрать продуктовый артефакт",
-    desc: "Быстро сделать рабочую версию: продукт, страницу, агента, demo, memo, карту сценариев или concept page.",
-  },
-  {
-    num: "04",
-    title: "Проверить и упаковать",
-    desc: "Протестировать логику, убрать шум, объяснить результат и подготовить его к показу или передаче.",
-  },
-];
-
-const HowIWork = () => (
-  <section className="py-24 lg:py-32 bg-background grain-overlay">
-    <div className="container mx-auto px-6 lg:px-8 max-w-6xl">
-      <div className="max-w-2xl mb-16 space-y-4">
-        <p className="text-sm font-medium uppercase tracking-[0.2em] text-accent-violet">
-          Метод
-        </p>
-        <h2 className="font-serif-display text-3xl sm:text-4xl text-foreground tracking-tight">
-          Как я работаю
-        </h2>
-      </div>
-      <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
-        {steps.map((s) => (
-          <div
-            key={s.num}
-            className="group relative p-6 rounded-xl border border-border/30 bg-surface-alt/50 transition-all duration-300 hover:border-accent-violet/30"
-          >
-            <span className="text-3xl font-bold text-accent-violet/15 mb-4 block group-hover:text-accent-violet/25 transition-colors duration-300">
-              {s.num}
-            </span>
-            <h3 className="text-base font-semibold text-foreground mb-2">{s.title}</h3>
-            <p className="text-sm text-muted-foreground leading-relaxed">{s.desc}</p>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
-);
-
 const Tag = ({ label }: { label: string }) => (
-  <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-accent-violet/10 text-accent-violet border border-accent-violet/20">
+  <span className="inline-flex items-center rounded-full border border-accent-violet/20 bg-accent-violet/10 px-2.5 py-1 text-xs font-medium text-accent-soft">
     {label}
   </span>
 );
 
-type CaseStatus = "live" | "chat" | "note";
+const SectionLabel = ({ children }: { children: string }) => (
+  <p className="text-xs font-semibold uppercase tracking-[0.22em] text-accent-soft/80">
+    {children}
+  </p>
+);
 
-interface CaseItem {
-  id: number;
-  title: string;
-  desc: string;
-  tags: string[];
-  details?: { heading: string; items: string[] }[];
-  note?: string;
-  link: string | null;
-  linkLabel: string | null;
-  status: CaseStatus;
-}
+const PrimaryLink = ({ href, children }: { href: string; children: string }) => (
+  <a
+    href={href}
+    target="_blank"
+    rel="noopener noreferrer"
+    className="inline-flex items-center gap-2 rounded-md border border-accent-violet/40 bg-accent-violet/10 px-5 py-3 text-sm font-semibold text-foreground transition-all duration-300 hover:border-accent-violet hover:bg-accent-violet/20 hover:shadow-glow"
+  >
+    {children}
+    <ExternalLink className="h-4 w-4 text-accent-soft" />
+  </a>
+);
 
-const casesData: CaseItem[] = [
-  {
-    id: 1,
-    title: "Gleb Lab Community — concept page из неполного брифа",
-    desc: "Разбор вакансии как продуктовой задачи. Главный акцент — способность работать с коротким, неполным брифом: читать между строк, собирать контекст автора и аудитории, достраивать продуктовую логику и доводить ее до опубликованного артефакта.",
-    details: [
-      {
-        heading: "Что сделано",
-        items: [
-          "Проведен ресерч публичного контекста автора: сайт, блог, боли аудитории, язык, айдентика и повторяющиеся смыслы.",
-          "Восстановлена продуктовая логика и переведена в структуру, тексты, TOV и визуальную систему страницы.",
-          "Собрана и опубликована страница через vibe-coding в стилистике автора.",
-        ],
-      },
-    ],
-    tags: [
-      "product thinking",
-      "неполный бриф -> артефакт",
-      "контекст-ресерч",
-      "TOV",
-      "vibe-coding",
-      "публичный результат",
-    ],
-    link: "https://marinaliivnew-bot.github.io/marina-liiv-landing/gleb-lab-community-identity/index.html",
-    linkLabel: "Открыть страницу",
-    status: "live",
-  },
-  {
-    id: 2,
-    title: "AI-система для проработки продуктовых инициатив",
-    desc: "Корпоративный AI/Product-кейс: связка ролей для генерации идей, независимой критики рисков и пошаговой проработки инициатив через продуктовые артефакты. Это не один универсальный чат-бот, а система с разными режимами мышления и контрольными точками.",
-    details: [
-      {
-        heading: "Что показывает кейс",
-        items: [
-          "Разделение ролей AI-агентов: Generator расширяет поле идей, Critic проверяет риски, Productolog ведет инициативу через артефакты.",
-          "Перевод неопределенной бизнес-задачи в управляемый процесс: цель -> варианты -> выбор -> доработка -> подтверждение.",
-          "QA поведения агента: последовательность этапов, связность артефактов, явные подтверждения и отсутствие лишних домыслов.",
-        ],
-      },
-    ],
-    tags: ["AI Product", "agent logic", "product discovery", "QA", "B2B handover", "NDA-safe"],
-    note: "Детали промптов, workflow, участники и внутренняя архитектура не раскрываются. Публично показывается только класс задачи, роль и продуктовая логика.",
-    link: null,
-    linkLabel: null,
-    status: "note",
-  },
-  {
-    id: 3,
-    title: "AI-assisted MVP для нового страхового канала",
-    desc: "0->1 проработка AI-assisted MVP для нового канала продаж страхового продукта через непрофессиональных партнеров. Задача — проверить, может ли диалоговый слой снизить порог входа и объяснить сложный продукт в простом guided flow.",
-    details: [
-      {
-        heading: "Что сделано",
-        items: [
-          "Сформулированы принципы MVP: один продукт, один сценарий, минимум шагов, контролируемая модель и понятная выгода.",
-          "Проработаны сценарии продавца и клиента, ограничения визуального прототипа и материалы для решения о следующем этапе.",
-          "В рамках проработки был собран обезличенный Lovable-прототип клиентского пути: от выбора сценария до подбора тарифа, сравнения пакетов и объяснения ключевых страховых условий.",
-        ],
-      },
-    ],
-    tags: ["0->1 discovery", "MVP-концепт", "regulated domain", "conversational flow", "clickable prototype"],
-    note: "Это MVP-концепт и визуальный прототип, а не утверждение о запущенном канале продаж. Брендированные детали и ссылка не публикуются из-за NDA.",
-    link: null,
-    linkLabel: null,
-    status: "note",
-  },
-  {
-    id: 4,
-    title: "Nutri Intelligence Agent — структурный AI-ассистент для нутрициолога",
-    desc: "Custom GPT / AI-ассистент с инструкциями, базой знаний, маршрутами проверки и шаблонами интерпретации. Задача — предварительная структуризация чувствительных экспертных данных перед консультацией: анализы, анкета, дневник питания, жалобы, иногда УЗИ.",
-    details: [
-      {
-        heading: "Safety / anti-hallucination layer",
-        items: [
-          "Агент не дает диагнозов, назначений и дозировок в режиме клиента.",
-          "Показывает, какие параметры извлек, и оставляет финальное решение за специалистом.",
-          "При неполных данных отмечает ограничения, а не додумывает.",
-        ],
-      },
-    ],
-    tags: ["экспертные данные", "anti-hallucination", "health/wellness", "product validation"],
-    note: "Кейс важен не как нутри-проект, а как пример работы с чувствительными данными, где есть риск галлюцинаций и высокая цена неверной интерпретации.",
-    link: null,
-    linkLabel: null,
-    status: "note",
-  },
-  {
-    id: 5,
-    title: "Magic Capture — AI-first продукт для интерьерного брифа",
-    desc: "Работающий AI-продукт, который превращает хаотичный клиентский запрос в структурированный интерьерный бриф, выявляет противоречия и готовит материал для дальнейшей работы дизайнера.",
-    details: [
-      {
-        heading: "Что показывает",
-        items: [
-          "Переход от хаоса к структуре: неструктурированный запрос превращается в рабочий бриф.",
-          "AI-брифинг, выявление противоречий и UX-логика для пользователя без профессионального языка дизайнера.",
-          "Способность проектировать AI-first продукт, а не просто страницу или демо.",
-        ],
-      },
-    ],
-    tags: ["AI-брифинг", "хаос -> структура", "UX logic", "React", "Supabase", "OpenAI API"],
-    note: "Продукт уже работает, но проходит полный QA и продуктовую ревизию: нужно дотестировать сценарии, исправить баги и обновить первый экран, потому что после добавления новых функций он уже не отражает текущую суть продукта.",
-    link: "https://magic-capture-designer-app.pages.dev/",
-    linkLabel: "Открыть Magic Capture",
-    status: "live",
-  },
-  {
-    id: 6,
-    title: "AI-диагност для бизнеса — хакатон -> агент -> лендинг",
-    desc: "Агент, который помогает бизнесу понять, где AI действительно может быть полезен, а где будет лишней игрушкой. Проект вырос из хакатона, был адаптирован в OpenAI Assistant и размещен как демо на лендинге.",
-    tags: ["AI discovery", "сценарии диагностики", "упаковка AI use cases", "demo", "OpenAI Assistant"],
-    link: null,
-    linkLabel: "Открыть AI-диагност",
-    status: "chat",
-  },
-];
-
-const artifactData: CaseItem[] = [
-  {
-    id: 1,
-    title: "LLM Compare Compass",
-    desc: "Визуальный dashboard для сравнения LLM в контексте выбора модели для бота-помощника. Цель — не просто собрать метрики, а превратить техническое сравнение в понятный материал для управленческого решения.",
-    tags: ["decision-support dashboard", "LLM comparison", "аналитическая упаковка"],
-    link: "https://llm-compare-compass.lovable.app",
-    linkLabel: "Открыть dashboard",
-    status: "live",
-  },
-  {
-    id: 2,
-    title: "Team Boost Bots",
-    desc: "Упаковка линейки AI-ассистентов в B2B-предложение агентства: структура лендинга, описание ценности, карточки решений, CTA и айдентика.",
-    tags: ["B2B packaging artifact", "landing page logic", "AI assistants"],
-    note: "Ссылка не публикуется: на странице есть реальные контактные данные. Кейс можно обсуждать как внутренний demo / B2B packaging artifact без вывода внешнего URL.",
-    link: null,
-    linkLabel: null,
-    status: "note",
-  },
-];
-
-const CaseCard = ({ c, onOpenChat }: { c: CaseItem; onOpenChat: () => void }) => (
-  <div className="group relative p-8 rounded-2xl border border-border/30 bg-background/50 transition-all duration-300 hover:border-accent-violet/30">
-    <div className="flex flex-col lg:flex-row lg:items-start lg:gap-12">
-      <div className="flex-1 space-y-4">
-        <div className="flex items-start gap-3">
-          <span className="flex-shrink-0 text-xs font-bold text-accent-violet/40 mt-1 tabular-nums">
-            {String(c.id).padStart(2, "0")}
-          </span>
-          <h3 className="text-lg sm:text-xl font-semibold text-foreground leading-snug">
-            {c.title}
-          </h3>
+const CasesHero = () => (
+  <section className="relative overflow-hidden bg-violet-deep pt-32 pb-20 lg:pt-40 lg:pb-28 grain-overlay">
+    <div className="container relative z-10 mx-auto max-w-6xl px-6 lg:px-8">
+      <div className="grid gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:items-end">
+        <div className="max-w-3xl space-y-7">
+          <SectionLabel>Портфолио</SectionLabel>
+          <h1 className="font-serif-display text-4xl leading-[1.05] tracking-tight text-foreground sm:text-5xl lg:text-6xl">
+            AI-продукты и кейсы:
+            <span className="block text-gradient">от хаоса к рабочему артефакту</span>
+          </h1>
+          <p className="max-w-2xl text-base leading-relaxed text-muted-foreground sm:text-lg">
+            Не каталог всего подряд, а несколько доказательств: как Марина разбирает задачу,
+            проектирует AI-логику, собирает продуктовую версию и честно отделяет live, demo и NDA-safe.
+          </p>
         </div>
 
-        <p className="text-sm text-muted-foreground leading-relaxed pl-6">
-          {c.desc}
-        </p>
-
-        {c.details && c.details.length > 0 && (
-          <div className="pl-6 space-y-4">
-            {c.details.map((section) => (
-              <div key={section.heading}>
-                <p className="text-xs font-medium uppercase tracking-[0.15em] text-accent-violet/70 mb-2">
-                  {section.heading}
-                </p>
-                <ul className="space-y-1.5">
-                  {section.items.map((item, i) => (
-                    <li key={i} className="flex items-start gap-2 text-sm text-muted-foreground leading-relaxed">
-                      <span className="mt-1.5 flex-shrink-0 w-1 h-1 rounded-full bg-accent-violet/40" />
-                      {item}
-                    </li>
-                  ))}
-                </ul>
+        <div className="rounded-2xl border border-accent-violet/20 bg-background/45 p-5 shadow-card">
+          <div className="grid grid-cols-2 gap-3">
+            {[
+              ["01", "Live product", "Magic Capture"],
+              ["02", "AI systems", "Корпоративные агенты"],
+              ["03", "Expert data", "Nutri Intelligence"],
+              ["04", "Artifacts", "Vibe-coding и dashboards"],
+            ].map(([num, title, desc]) => (
+              <div key={num} className="rounded-lg border border-border/25 bg-surface-alt/60 p-4">
+                <p className="mb-5 text-xs font-bold text-accent-violet/60">{num}</p>
+                <p className="text-sm font-semibold text-foreground">{title}</p>
+                <p className="mt-1 text-xs leading-relaxed text-muted-foreground">{desc}</p>
               </div>
             ))}
           </div>
-        )}
+        </div>
+      </div>
+    </div>
+  </section>
+);
 
-        {c.note && (
-          <div className="ml-6 p-4 rounded-lg bg-accent-violet/5 border border-accent-violet/15">
-            <p className="text-xs text-muted-foreground/80 leading-relaxed italic">
-              {c.note}
+const ProofStrip = () => (
+  <section className="bg-background py-10 grain-overlay">
+    <div className="container relative z-10 mx-auto max-w-6xl px-6 lg:px-8">
+      <div className="grid gap-4 md:grid-cols-4">
+        {[
+          { icon: BrainCircuit, title: "Разобраться", text: "контекст, аудитория, ограничения" },
+          { icon: Workflow, title: "Спроектировать", text: "роль агента, сценарий, риски" },
+          { icon: FlaskConical, title: "Собрать", text: "live product, demo или prototype" },
+          { icon: ShieldCheck, title: "Упаковать", text: "QA, NDA, handover, позиционирование" },
+        ].map(({ icon: Icon, title, text }) => (
+          <div key={title} className="flex gap-3 rounded-lg border border-border/20 bg-surface-alt/40 p-4">
+            <Icon className="mt-0.5 h-5 w-5 flex-shrink-0 text-accent-soft" />
+            <div>
+              <p className="text-sm font-semibold text-foreground">{title}</p>
+              <p className="mt-1 text-xs leading-relaxed text-muted-foreground">{text}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+);
+
+const MagicSection = () => (
+  <section className="bg-surface-alt py-24 lg:py-32 grain-overlay">
+    <div className="container relative z-10 mx-auto max-w-6xl px-6 lg:px-8">
+      <div className="grid gap-10 lg:grid-cols-[0.92fr_1.08fr] lg:items-center">
+        <div className="space-y-6">
+          <SectionLabel>Главный public product</SectionLabel>
+          <h2 className="font-serif-display text-3xl leading-tight text-foreground sm:text-5xl">
+            Magic Capture превращает хаотичный интерьерный запрос в рабочий бриф
+          </h2>
+          <p className="text-base leading-relaxed text-muted-foreground">
+            Это уже не прототип, а работающий AI-first продукт. Он собирает вводные, задает уточняющие вопросы,
+            выявляет противоречия и готовит материал, с которым дизайнер может идти дальше.
+          </p>
+          <div className="flex flex-wrap gap-2">
+            {["live product", "active QA", "AI-брифинг", "React", "Supabase", "OpenAI API"].map((tag) => (
+              <Tag key={tag} label={tag} />
+            ))}
+          </div>
+          <PrimaryLink href="https://magic-capture-designer-app.pages.dev/">
+            Открыть Magic Capture
+          </PrimaryLink>
+        </div>
+
+        <div className="rounded-2xl border border-accent-violet/25 bg-background/55 p-5 shadow-card">
+          <div className="rounded-xl border border-border/25 bg-violet-deep/80 p-5">
+            <div className="mb-5 flex items-center justify-between border-b border-border/25 pb-4">
+              <div>
+                <p className="text-xs uppercase tracking-[0.18em] text-accent-soft/70">Product status</p>
+                <p className="mt-1 text-lg font-semibold text-foreground">Working, but still being sharpened</p>
+              </div>
+              <Sparkles className="h-6 w-6 text-accent-soft" />
+            </div>
+            <div className="grid gap-3 sm:grid-cols-2">
+              {[
+                ["Что уже работает", "структурирование запроса, логика брифа, подготовка материалов"],
+                ["Что честно в доработке", "полный QA, баги, первый экран после добавления фич"],
+                ["Что доказывает", "умение проектировать AI-first продукт, а не просто страницу"],
+                ["Почему в портфолио", "публичный продукт с реальным стеком и понятной ценностью"],
+              ].map(([title, text]) => (
+                <div key={title} className="rounded-lg border border-border/20 bg-background/35 p-4">
+                  <p className="text-sm font-semibold text-foreground">{title}</p>
+                  <p className="mt-2 text-xs leading-relaxed text-muted-foreground">{text}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+);
+
+const CorporateSection = () => (
+  <section className="bg-background py-24 lg:py-32 grain-overlay">
+    <div className="container relative z-10 mx-auto max-w-6xl px-6 lg:px-8">
+      <div className="mb-12 max-w-3xl space-y-4">
+        <SectionLabel>Корпоративные AI-системы</SectionLabel>
+        <h2 className="font-serif-display text-3xl leading-tight text-foreground sm:text-5xl">
+          Здесь важна не картинка, а инженерия смысла
+        </h2>
+        <p className="text-sm leading-relaxed text-muted-foreground sm:text-base">
+          Эти кейсы раскрываются аккуратно: без промптов, внутренних ссылок, имен и архитектуры. Наружу выходит
+          только класс задачи, роль Марины и продуктовая логика.
+        </p>
+      </div>
+
+      <div className="grid gap-6 lg:grid-cols-2">
+        <article className="rounded-2xl border border-border/25 bg-surface-alt/55 p-7">
+          <div className="mb-6 flex items-start justify-between gap-4">
+            <div>
+              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-accent-soft/70">AI product pipeline</p>
+              <h3 className="mt-3 text-2xl font-semibold leading-tight text-foreground">
+                AI-система для проработки продуктовых инициатив
+              </h3>
+            </div>
+            <Workflow className="h-7 w-7 flex-shrink-0 text-accent-soft" />
+          </div>
+          <p className="text-sm leading-relaxed text-muted-foreground">
+            Связка ролей для генерации идей, независимой критики рисков и пошаговой проработки инициатив через
+            продуктовые артефакты. Не один универсальный чат-бот, а система с разными режимами мышления.
+          </p>
+          <div className="mt-6 space-y-3">
+            {[
+              "Generator расширяет поле идей",
+              "Critic проверяет риски и противоречия",
+              "Productolog ведет инициативу через артефакты и подтверждения",
+            ].map((item) => (
+              <p key={item} className="flex gap-3 text-sm text-muted-foreground">
+                <CheckCircle2 className="mt-0.5 h-4 w-4 flex-shrink-0 text-accent-soft" />
+                {item}
+              </p>
+            ))}
+          </div>
+          <div className="mt-6 flex flex-wrap gap-2">
+            {["agent logic", "product discovery", "QA", "B2B handover", "NDA-safe"].map((tag) => (
+              <Tag key={tag} label={tag} />
+            ))}
+          </div>
+        </article>
+
+        <article className="rounded-2xl border border-border/25 bg-surface-alt/55 p-7">
+          <div className="mb-6 flex items-start justify-between gap-4">
+            <div>
+              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-accent-soft/70">Regulated MVP</p>
+              <h3 className="mt-3 text-2xl font-semibold leading-tight text-foreground">
+                AI-assisted MVP для нового страхового канала
+              </h3>
+            </div>
+            <ShieldCheck className="h-7 w-7 flex-shrink-0 text-accent-soft" />
+          </div>
+          <p className="text-sm leading-relaxed text-muted-foreground">
+            0→1 проработка MVP для канала продаж страхового продукта через непрофессиональных партнеров. Бренд,
+            ссылка и детали не публикуются; кейс остается обезличенным.
+          </p>
+          <div className="mt-6 space-y-3">
+            {[
+              "один продукт, один сценарий, минимум шагов",
+              "продавец и клиент разведены по ролям",
+              "визуальный прототип объясняет сложные условия через guided flow",
+            ].map((item) => (
+              <p key={item} className="flex gap-3 text-sm text-muted-foreground">
+                <CheckCircle2 className="mt-0.5 h-4 w-4 flex-shrink-0 text-accent-soft" />
+                {item}
+              </p>
+            ))}
+          </div>
+          <div className="mt-6 rounded-lg border border-accent-violet/15 bg-accent-violet/5 p-4">
+            <p className="text-xs leading-relaxed text-muted-foreground">
+              Это MVP-концепт и визуальный прототип, а не утверждение о запущенном канале продаж.
             </p>
           </div>
-        )}
-
-        <div className="flex flex-wrap gap-2 pl-6 pt-1">
-          {c.tags.map((t) => (
-            <Tag key={t} label={t} />
-          ))}
-        </div>
-      </div>
-
-      <div className="mt-6 lg:mt-1 lg:flex-shrink-0 pl-6 lg:pl-0">
-        {c.status === "live" && c.link && (
-          <a
-            href={c.link}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-md border border-accent-violet/40 text-foreground text-sm font-medium transition-all duration-300 hover:border-accent-violet hover:shadow-glow hover:bg-accent-violet/5"
-          >
-            <ExternalLink className="w-4 h-4 text-accent-violet" />
-            {c.linkLabel}
-          </a>
-        )}
-        {c.status === "chat" && (
-          <button
-            onClick={onOpenChat}
-            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-md border border-accent-violet/40 text-foreground text-sm font-medium transition-all duration-300 hover:border-accent-violet hover:shadow-glow hover:bg-accent-violet/5"
-          >
-            <Sparkles className="w-4 h-4 text-accent-violet" />
-            {c.linkLabel}
-          </button>
-        )}
-      </div>
-    </div>
-  </div>
-);
-
-const CasesGrid = ({ onOpenChat }: { onOpenChat: () => void }) => (
-  <section className="py-24 lg:py-32 bg-surface-alt grain-overlay">
-    <div className="container mx-auto px-6 lg:px-8 max-w-6xl">
-      <div className="max-w-2xl mb-16 space-y-4">
-        <p className="text-sm font-medium uppercase tracking-[0.2em] text-accent-violet">
-          Избранное
-        </p>
-        <h2 className="font-serif-display text-3xl sm:text-4xl text-foreground tracking-tight">
-          Featured cases
-        </h2>
-      </div>
-
-      <div className="space-y-6">
-        {casesData.map((c) => (
-          <CaseCard key={c.id} c={c} onOpenChat={onOpenChat} />
-        ))}
+        </article>
       </div>
     </div>
   </section>
 );
 
-const ArtifactGrid = () => (
-  <section className="py-20 lg:py-24 bg-background grain-overlay">
-    <div className="container mx-auto px-6 lg:px-8 max-w-6xl">
-      <div className="max-w-2xl mb-12 space-y-4">
-        <p className="text-sm font-medium uppercase tracking-[0.2em] text-accent-violet">
-          Supporting artifacts
-        </p>
-        <h2 className="font-serif-display text-2xl sm:text-3xl text-foreground tracking-tight">
-          Рабочие артефакты и визуальные прототипы
-        </h2>
-        <p className="text-sm text-muted-foreground leading-relaxed">
-          Эти проекты не подменяют основные кейсы. Они показывают скорость материализации идеи:
-          clickable prototype, decision-support dashboard или B2B packaging artifact для обсуждения с командой.
-        </p>
-      </div>
-
-      <div className="grid md:grid-cols-2 gap-5">
-        {artifactData.map((c) => (
-          <CaseCard key={c.id} c={c} onOpenChat={() => undefined} />
-        ))}
-      </div>
-    </div>
-  </section>
-);
-
-const interviewCases = [
-  { label: "GWP / insurance AI", desc: "детали корпоративных AI-ассистентов, роли и handover без раскрытия промптов" },
-  { label: "Amway Crisis 2022", desc: "портфель, кризисное управление и решения под ограничениями" },
-  { label: "Portfolio PO background", desc: "опыт business -> IT и Product Owner остается в резюме и interview book" },
-];
-
-const InterviewCases = () => (
-  <section className="py-20 lg:py-24 bg-surface-alt grain-overlay">
-    <div className="container mx-auto px-6 lg:px-8 max-w-6xl">
-      <div className="grid md:grid-cols-2 gap-12 items-start">
-        <div className="space-y-4">
-          <p className="text-sm font-medium uppercase tracking-[0.2em] text-accent-violet">
-            Корпоративный опыт
-          </p>
-          <h2 className="font-serif-display text-2xl sm:text-3xl text-foreground tracking-tight">
-            Interview cases
+const ExpertDataSection = () => (
+  <section className="bg-surface-alt py-24 lg:py-32 grain-overlay">
+    <div className="container relative z-10 mx-auto max-w-6xl px-6 lg:px-8">
+      <div className="grid gap-10 lg:grid-cols-[1fr_0.9fr] lg:items-center">
+        <div className="space-y-5">
+          <SectionLabel>Expert data & safety</SectionLabel>
+          <h2 className="font-serif-display text-3xl leading-tight text-foreground sm:text-5xl">
+            Nutri Intelligence Agent: AI там, где нельзя фантазировать
           </h2>
-          <p className="text-muted-foreground leading-relaxed text-sm">
-            Часть кейсов связана с корпоративными проектами и ограничениями раскрытия. Их лучше разбирать на интервью:
-            с контекстом, ролью, задачами, ограничениями и принятыми решениями.
+          <p className="text-base leading-relaxed text-muted-foreground">
+            Кейс важен не как нутри-проект, а как пример работы с чувствительными экспертными данными:
+            анализы, анкеты, дневники питания, жалобы. Цена неверной интерпретации высокая, поэтому агент
+            работает как структурный помощник, а не как источник диагнозов.
           </p>
         </div>
-        <div className="space-y-3">
-          {interviewCases.map((c) => (
-            <div
-              key={c.label}
-              className="flex items-center gap-4 p-4 rounded-xl border border-border/20 bg-background/40"
-            >
-              <CheckCircle2 className="w-4 h-4 text-accent-violet/50 flex-shrink-0" />
-              <p className="text-sm">
-                <span className="font-medium text-foreground">{c.label}</span>
-                <span className="text-muted-foreground"> — {c.desc}</span>
-              </p>
+        <div className="rounded-2xl border border-border/25 bg-background/45 p-6">
+          {[
+            "не дает диагнозов, назначений и дозировок",
+            "показывает, какие параметры извлек",
+            "при неполных данных отмечает ограничения",
+            "финальное решение оставляет специалисту",
+          ].map((item) => (
+            <div key={item} className="flex gap-3 border-b border-border/20 py-4 last:border-b-0">
+              <FileSearch className="mt-0.5 h-5 w-5 flex-shrink-0 text-accent-soft" />
+              <p className="text-sm leading-relaxed text-muted-foreground">{item}</p>
             </div>
           ))}
         </div>
@@ -419,44 +270,157 @@ const InterviewCases = () => (
   </section>
 );
 
-const CasesCTA = ({ onOpenChat }: { onOpenChat: () => void }) => (
-  <section className="py-20 lg:py-24 bg-background border-t border-border/30 grain-overlay">
-    <div className="container mx-auto px-6 lg:px-8 max-w-6xl">
-      <div className="max-w-2xl mx-auto text-center space-y-8">
-        <div className="space-y-4">
-          <h2 className="font-serif-display text-2xl sm:text-3xl text-foreground tracking-tight">
-            Есть задача для AI?
+type Artifact = {
+  title: string;
+  text: string;
+  tags: string[];
+  link?: string;
+  linkLabel?: string;
+  note?: string;
+};
+
+const artifacts: Artifact[] = [
+  {
+    title: "Gleb Lab Community",
+    text: "Concept page из неполного брифа: ресерч публичного контекста, продуктовая логика, TOV и опубликованная страница.",
+    tags: ["vibe-coding", "context research", "public result"],
+    link: "https://marinaliivnew-bot.github.io/marina-liiv-landing/gleb-lab-community-identity/index.html",
+    linkLabel: "Открыть страницу",
+  },
+  {
+    title: "AI-диагност для бизнеса",
+    text: "Агент, который помогает бизнесу понять, где AI полезен, а где будет лишним украшением процесса.",
+    tags: ["AI discovery", "OpenAI Assistant", "demo"],
+  },
+  {
+    title: "LLM Compare Compass",
+    text: "Decision-support dashboard для сравнения LLM в формате, понятном не только технической команде.",
+    tags: ["dashboard", "LLM comparison", "decision support"],
+    link: "https://llm-compare-compass.lovable.app",
+    linkLabel: "Открыть dashboard",
+  },
+  {
+    title: "Team Boost Bots",
+    text: "Упаковка линейки AI-ассистентов в B2B-предложение агентства: структура, ценность, карточки решений и CTA.",
+    tags: ["B2B packaging", "landing logic", "internal demo"],
+    note: "Ссылка не публикуется: на странице есть реальные контактные данные.",
+  },
+];
+
+const ArtifactSection = ({ onOpenChat }: { onOpenChat: () => void }) => (
+  <section className="bg-background py-24 lg:py-32 grain-overlay">
+    <div className="container relative z-10 mx-auto max-w-6xl px-6 lg:px-8">
+      <div className="mb-12 max-w-3xl space-y-4">
+        <SectionLabel>Public artifacts</SectionLabel>
+        <h2 className="font-serif-display text-3xl leading-tight text-foreground sm:text-5xl">
+          Быстрые визуальные доказательства вместо длинных объяснений
+        </h2>
+        <p className="text-sm leading-relaxed text-muted-foreground sm:text-base">
+          Этот блок ниже по иерархии. Он показывает скорость материализации идеи: страница, demo, dashboard,
+          упаковка B2B-предложения.
+        </p>
+      </div>
+
+      <div className="grid gap-5 md:grid-cols-2">
+        {artifacts.map((item) => (
+          <article key={item.title} className="rounded-2xl border border-border/25 bg-surface-alt/45 p-6">
+            <h3 className="text-xl font-semibold text-foreground">{item.title}</h3>
+            <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{item.text}</p>
+            {item.note && (
+              <p className="mt-4 rounded-lg border border-accent-violet/15 bg-accent-violet/5 p-3 text-xs leading-relaxed text-muted-foreground">
+                {item.note}
+              </p>
+            )}
+            <div className="mt-5 flex flex-wrap gap-2">
+              {item.tags.map((tag) => (
+                <Tag key={tag} label={tag} />
+              ))}
+            </div>
+            <div className="mt-6">
+              {item.link && item.linkLabel && (
+                <PrimaryLink href={item.link}>{item.linkLabel}</PrimaryLink>
+              )}
+              {item.title === "AI-диагност для бизнеса" && (
+                <button
+                  onClick={onOpenChat}
+                  className="inline-flex items-center gap-2 rounded-md border border-accent-violet/40 bg-accent-violet/10 px-5 py-3 text-sm font-semibold text-foreground transition-all duration-300 hover:border-accent-violet hover:bg-accent-violet/20 hover:shadow-glow"
+                >
+                  Открыть AI-диагност
+                  <Sparkles className="h-4 w-4 text-accent-soft" />
+                </button>
+              )}
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+);
+
+const InterviewAndCTA = ({ onOpenChat }: { onOpenChat: () => void }) => (
+  <section className="bg-surface-alt py-20 lg:py-24 grain-overlay">
+    <div className="container relative z-10 mx-auto max-w-6xl px-6 lg:px-8">
+      <div className="grid gap-10 lg:grid-cols-[0.95fr_1.05fr]">
+        <div className="space-y-5">
+          <SectionLabel>Interview cases</SectionLabel>
+          <h2 className="font-serif-display text-3xl leading-tight text-foreground sm:text-4xl">
+            То, что лучше раскрывать в разговоре
           </h2>
-          <p className="text-muted-foreground leading-relaxed">
-            Если у вас есть задача, где AI должен не красиво лежать в презентации, а работать
-            в реальном процессе — можно начать с короткого разбора.
+          <p className="text-sm leading-relaxed text-muted-foreground">
+            Корпоративные детали, кризисное управление и Product Owner background лучше обсуждать на интервью:
+            там можно дать контекст, но не публиковать лишнее.
           </p>
         </div>
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-          <a
-            href="/marina-liiv-landing/cv-marina-liiv.pdf"
-            download
-            className="inline-flex items-center gap-2 px-6 py-3 rounded-md border border-border/40 text-muted-foreground text-sm font-medium transition-all duration-300 hover:text-foreground hover:border-accent-violet/30"
-          >
-            <Download className="w-4 h-4" />
-            Скачать резюме
-          </a>
-          <a
-            href="https://t.me/MarinaLiiv"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-6 py-3 rounded-md border border-accent-violet/40 text-foreground text-sm font-medium transition-all duration-300 hover:border-accent-violet hover:shadow-glow"
-          >
-            <Send className="w-4 h-4 text-accent-violet" />
-            Написать в Telegram
-          </a>
-          <button
-            onClick={onOpenChat}
-            className="inline-flex items-center gap-2 px-6 py-3 rounded-md border border-accent-violet/30 bg-accent-violet/10 text-foreground text-sm font-medium transition-all duration-300 hover:border-accent-violet hover:bg-accent-violet/20 hover:shadow-glow"
-          >
-            <Sparkles className="w-4 h-4 text-accent-violet" />
-            Открыть AI-диагност
-          </button>
+        <div className="space-y-3">
+          {[
+            "корпоративные AI-ассистенты без раскрытия промптов",
+            "кризисное управление портфелем под ограничениями",
+            "business → IT и Product Owner background",
+          ].map((item) => (
+            <div key={item} className="flex gap-3 rounded-lg border border-border/20 bg-background/35 p-4">
+              <CheckCircle2 className="mt-0.5 h-5 w-5 flex-shrink-0 text-accent-soft" />
+              <p className="text-sm leading-relaxed text-muted-foreground">{item}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div className="mt-16 rounded-2xl border border-accent-violet/25 bg-accent-violet/10 p-6 lg:p-8">
+        <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
+          <div className="max-w-2xl">
+            <h3 className="font-serif-display text-2xl text-foreground sm:text-3xl">
+              Есть задача, где AI должен работать в процессе?
+            </h3>
+            <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+              Можно начать с короткого разбора: где AI действительно нужен, какие данные есть, какой артефакт стоит собрать первым.
+            </p>
+          </div>
+          <div className="flex flex-col gap-3 sm:flex-row">
+            <a
+              href="/marina-liiv-landing/cv-marina-liiv.pdf"
+              download
+              className="inline-flex items-center justify-center gap-2 rounded-md border border-border/40 px-5 py-3 text-sm font-medium text-muted-foreground transition-all duration-300 hover:border-accent-violet/30 hover:text-foreground"
+            >
+              <Download className="h-4 w-4" />
+              Скачать резюме
+            </a>
+            <a
+              href="https://t.me/MarinaLiiv"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center gap-2 rounded-md border border-accent-violet/40 px-5 py-3 text-sm font-medium text-foreground transition-all duration-300 hover:border-accent-violet hover:shadow-glow"
+            >
+              <Send className="h-4 w-4 text-accent-soft" />
+              Написать в Telegram
+            </a>
+            <button
+              onClick={onOpenChat}
+              className="inline-flex items-center justify-center gap-2 rounded-md border border-accent-violet/30 bg-accent-violet/10 px-5 py-3 text-sm font-medium text-foreground transition-all duration-300 hover:border-accent-violet hover:bg-accent-violet/20 hover:shadow-glow"
+            >
+              <Sparkles className="h-4 w-4 text-accent-soft" />
+              AI-диагност
+            </button>
+          </div>
         </div>
       </div>
     </div>
@@ -477,29 +441,37 @@ const Cases = () => {
       <SectionConnector />
 
       <AnimatedSection delay={100}>
-        <HowIWork />
+        <ProofStrip />
       </AnimatedSection>
 
       <SectionConnector />
 
       <AnimatedSection delay={100}>
-        <CasesGrid onOpenChat={openChat} />
+        <MagicSection />
       </AnimatedSection>
 
       <SectionConnector />
 
       <AnimatedSection delay={100}>
-        <ArtifactGrid />
+        <CorporateSection />
       </AnimatedSection>
 
       <SectionConnector />
 
       <AnimatedSection delay={100}>
-        <InterviewCases />
+        <ExpertDataSection />
       </AnimatedSection>
 
+      <SectionConnector />
+
       <AnimatedSection delay={100}>
-        <CasesCTA onOpenChat={openChat} />
+        <ArtifactSection onOpenChat={openChat} />
+      </AnimatedSection>
+
+      <SectionConnector />
+
+      <AnimatedSection delay={100}>
+        <InterviewAndCTA onOpenChat={openChat} />
       </AnimatedSection>
 
       <ChatWidget open={chatOpen} onClose={closeChat} />
