@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { Menu, X, ArrowRight, Sparkles } from "lucide-react";
 import { useChatContext } from "@/contexts/ChatContext";
 
@@ -32,14 +33,14 @@ const NavHeader = () => {
     >
       <div className="container mx-auto px-6 lg:px-8 max-w-6xl">
         <div className="flex items-center justify-between h-16">
-          <a href="#" className="flex items-center gap-2.5 group" onClick={handleClick}>
+          <Link to="/" className="flex items-center gap-2.5 group" onClick={handleClick}>
             <span className="inline-flex items-center justify-center w-9 h-9 rounded-md border border-accent-violet/30 text-accent-violet text-sm font-bold tracking-tight">
               ML
             </span>
             <span className="text-sm font-medium text-foreground hidden sm:inline tracking-wide">
               Marina Liiv
             </span>
-          </a>
+          </Link>
 
           <nav className="hidden md:flex items-center gap-1">
             {navLinks.map((link) => (
@@ -51,6 +52,12 @@ const NavHeader = () => {
                 {link.label}
               </a>
             ))}
+            <Link
+              to="/cases"
+              className="px-4 py-2 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+            >
+              Кейсы
+            </Link>
           </nav>
 
           <div className="hidden md:flex items-center gap-2">
@@ -93,6 +100,13 @@ const NavHeader = () => {
                 {link.label}
               </a>
             ))}
+            <Link
+              to="/cases"
+              onClick={handleClick}
+              className="px-4 py-3 text-base font-medium text-muted-foreground hover:text-foreground transition-colors"
+            >
+              Кейсы
+            </Link>
             <button
               onClick={() => { handleClick(); openChat(); }}
               className="mt-2 flex items-center justify-center gap-2 px-5 py-3 rounded-md border border-accent-violet/30 bg-accent-violet/10 text-foreground text-sm font-medium"
