@@ -6,24 +6,28 @@ const expertise = [
     title: "Архитектура AI‑агентов",
     description:
       "Проектирую AI‑агентов под конкретную задачу — ассистентов, аналитиков, помощников для команды или клиентов.",
+    accentTop: "border-t-[#8FDBFF]/70",
   },
   {
     icon: Users,
     title: "Customer Journey",
     description:
       "Выстраиваю путь клиента так, чтобы он был логичным — и чтобы команда не тратила время на ручную работу.",
+    accentTop: "border-t-[#B7F7D8]/70",
   },
   {
     icon: Layers,
     title: "Прототипирование",
     description:
       "Собираю рабочий прототип за 2–4 недели. Не презентацию — систему, которую можно тестировать.",
+    accentTop: "border-t-[#FFE680]/70",
   },
   {
     icon: Link,
     title: "Бизнес‑интеграция",
     description:
       "Слежу, чтобы новое решение прижилось: понятно для команды, встроено в процесс, а не висит отдельно.",
+    accentTop: "border-t-[#FFB199]/70",
   },
 ];
 
@@ -49,7 +53,7 @@ const ExpertiseSection = () => {
         {/* Bento grid: большой блок слева, 3 маленьких справа */}
         <div className="grid md:grid-cols-2 gap-5">
           {/* Главная карточка — Архитектура AI-агентов */}
-          <div className="group relative row-span-3 flex flex-col justify-end p-8 md:p-10 rounded-2xl border border-border/30 bg-surface-alt/50 overflow-hidden transition-all duration-500 hover:border-accent-violet/30">
+          <div className={`group relative row-span-3 flex flex-col justify-end p-8 md:p-10 rounded-2xl border border-t-2 border-border/30 bg-surface-alt/50 overflow-hidden transition-all duration-500 hover:border-accent-violet/30 ${expertise[0].accentTop}`}>
             {/* Фоновый accent-градиент */}
             <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700">
               <div className="absolute inset-0 bg-gradient-to-br from-accent-violet/[0.03] via-transparent to-transparent" />
@@ -72,7 +76,7 @@ const ExpertiseSection = () => {
           {expertise.slice(1).map((item, index) => (
             <div
               key={index}
-              className="group flex gap-4 p-6 rounded-xl border border-border/30 bg-surface-alt/50 transition-all duration-300 hover:border-accent-violet/30"
+              className={`group flex gap-4 p-6 rounded-xl border border-t-2 border-border/30 bg-surface-alt/50 transition-all duration-300 hover:border-accent-violet/30 ${item.accentTop}`}
             >
               <div className="flex-shrink-0 mt-1">
                 <item.icon className="w-5 h-5 text-accent-violet" />

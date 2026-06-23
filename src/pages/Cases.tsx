@@ -117,8 +117,8 @@ const CasesHero = () => (
             <span className="block text-gradient">от хаоса к рабочему артефакту</span>
           </h1>
           <p className="max-w-2xl text-base leading-relaxed text-muted-foreground sm:text-lg">
-            Не каталог всего подряд, а несколько доказательств: как Марина разбирает задачу,
-            проектирует AI-логику, собирает продуктовую версию и честно отделяет live, demo и NDA-safe.
+            Не каталог всего подряд — несколько примеров того, как неопределённая задача превращается
+            в AI-сценарий, прототип и артефакт, который можно тестировать и передавать дальше.
           </p>
         </div>
 
@@ -356,8 +356,8 @@ type Artifact = {
 
 const artifacts: Artifact[] = [
   {
-    title: "Gleb Lab Community",
-    text: "Concept page из неполного брифа: ресерч публичного контекста, продуктовая логика, TOV и опубликованная страница.",
+    title: "Lab Community Identity",
+    text: "Неполный бриф как точка входа: экспорт блога, анализ языка и смыслов, болевые точки аудитории, айдентика — и готовая концепт-страница.",
     tags: ["vibe-coding", "context research", "public result"],
     accent: "pink",
     link: "https://marinaliivnew-bot.github.io/marina-liiv-landing/gleb-lab-community-identity/index.html",

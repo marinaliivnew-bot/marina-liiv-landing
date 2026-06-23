@@ -1,4 +1,5 @@
 import { ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
 import FloatingOrbs from "./FloatingOrbs";
 
 const BlueprintGrid = () => (
@@ -59,6 +60,13 @@ const HeroSection = () => {
         )`
       }} />
 
+      {/* Pixel accents */}
+      <div className="pointer-events-none absolute inset-0 z-[1] overflow-hidden" aria-hidden="true">
+        <span className="absolute right-[9%] top-20 h-4 w-4 rounded-sm opacity-80 bg-[#FFB199]" />
+        <span className="absolute left-[8%] top-[42%] h-3 w-3 rounded-sm opacity-70 bg-[#FDE68A]" />
+        <span className="absolute bottom-16 right-[18%] h-5 w-5 rounded-sm opacity-65 bg-[#FF9BD5]" />
+      </div>
+
       <BlueprintGrid />
 
       <FloatingOrbs />
@@ -79,14 +87,19 @@ const HeroSection = () => {
             15&nbsp;лет в&nbsp;продуктах и&nbsp;P&amp;L&nbsp;— теперь проектирую AI‑системы. Без хайпа и&nbsp;лишних обещаний.
           </p>
 
-          <div className="pt-2">
+          <div className="pt-2 flex flex-wrap gap-3">
+            <Link
+              to="/cases"
+              className="group inline-flex items-center gap-3 px-7 py-3.5 rounded-md border border-accent-violet/40 bg-accent-violet/10 text-foreground font-medium text-sm transition-all duration-300 hover:border-accent-violet hover:shadow-glow hover:bg-accent-violet/20">
+              Посмотреть кейсы
+              <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5" />
+            </Link>
             <button
               onClick={() => {
                 document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
               }}
-              className="group inline-flex items-center gap-3 px-7 py-3.5 rounded-md border border-accent-violet/40 text-foreground font-medium text-sm transition-all duration-300 hover:border-accent-violet hover:shadow-glow hover:bg-accent-violet/5">
+              className="group inline-flex items-center gap-3 px-7 py-3.5 rounded-md border border-border/40 text-muted-foreground font-medium text-sm transition-all duration-300 hover:border-accent-violet/30 hover:text-foreground">
               Обсудить проект
-              <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5" />
             </button>
           </div>
         </div>

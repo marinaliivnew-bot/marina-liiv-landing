@@ -9,18 +9,22 @@ const points = [
   {
     icon: BarChart3,
     title: "Понимаю P&L, а не только промпты",
+    accentTop: "border-t-[#FFB199]/70",
   },
   {
     icon: Briefcase,
     title: "Управляла реальными продуктовыми портфелями, а не только прототипами",
+    accentTop: "border-t-[#8FDBFF]/70",
   },
   {
     icon: Users,
     title: "Работаю внутри команды — а не «над» ней",
+    accentTop: "border-t-[#B7F7D8]/70",
   },
   {
     icon: GitBranch,
     title: "Для меня логика системы важнее автоматизации",
+    accentTop: "border-t-[#FFE680]/70",
   },
 ];
 
@@ -52,7 +56,7 @@ const WhyDifferentSection = () => {
           {points.map((point, index) => (
             <div
               key={index}
-              className="group flex items-start gap-5 p-6 rounded-xl border border-border/30 bg-surface-alt/50 transition-all duration-300 hover:border-accent-violet/30"
+              className={`group flex items-start gap-5 p-6 rounded-xl border border-t-2 border-border/30 bg-surface-alt/50 transition-all duration-300 hover:border-accent-violet/30 ${point.accentTop}`}
             >
               <div className="flex-shrink-0 mt-1">
                 <point.icon className="w-6 h-6 text-accent-violet" />
@@ -70,7 +74,7 @@ const WhyDifferentSection = () => {
             {points.map((point, index) => (
               <div
                 key={index}
-                className="snap-start shrink-0 w-[280px] flex items-start gap-4 p-5 rounded-xl border border-border/30 bg-surface-alt/50"
+                className={`snap-start shrink-0 w-[280px] flex items-start gap-4 p-5 rounded-xl border border-t-2 border-border/30 bg-surface-alt/50 ${point.accentTop}`}
               >
                 <div className="flex-shrink-0 mt-0.5">
                   <point.icon className="w-5 h-5 text-accent-violet" />

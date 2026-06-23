@@ -8,24 +8,28 @@ const metrics = [
     value: 150,
     suffix: "+",
     label: "SKU в управлении портфелем",
+    accentTop: "border-t-[#FFB199]/70",
   },
   {
     icon: Rocket,
     value: 15,
     suffix: "",
     label: "лет в глобальном бизнесе",
+    accentTop: "border-t-[#8FDBFF]/70",
   },
   {
     icon: Globe,
     value: 4,
     suffix: "+",
     label: "международных рынка",
+    accentTop: "border-t-[#B7F7D8]/70",
   },
   {
     icon: Lightbulb,
     value: 10,
     suffix: "+",
     label: "продуктов запущено с нуля",
+    accentTop: "border-t-[#FFE680]/70",
   },
 ];
 
@@ -113,6 +117,7 @@ const SocialProofSection = () => {
           {metrics.map((metric, index) => (
             <CounterCard key={index} {...metric} />
           ))}
+
         </div>
       </div>
     </section>
@@ -125,18 +130,20 @@ function CounterCard({
   value,
   suffix,
   label,
+  accentTop = "",
 }: {
   icon: LucideIcon;
   value: number;
   suffix: string;
   label: string;
+  accentTop?: string;
 }) {
   const { count, ref } = useCountUp(value);
 
   return (
     <div
       ref={ref}
-      className="group relative p-7 rounded-xl border border-border/30 bg-background/40 transition-all duration-300 hover:border-accent-violet/30 hover:bg-accent-violet/5"
+      className={`group relative p-7 rounded-xl border border-t-2 border-border/30 bg-background/40 transition-all duration-300 hover:border-accent-violet/30 hover:bg-accent-violet/5 ${accentTop}`}
     >
       <Icon className="w-5 h-5 text-accent-violet mb-5" />
       <div className="mb-1">
