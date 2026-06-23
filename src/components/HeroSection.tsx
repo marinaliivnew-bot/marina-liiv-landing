@@ -4,7 +4,7 @@ import FloatingOrbs from "./FloatingOrbs";
 
 const BlueprintGrid = () => (
   <svg
-    className="absolute right-0 top-0 h-full w-1/2 opacity-[0.55] pointer-events-none hidden lg:block"
+    className="absolute right-0 top-0 h-full w-1/2 opacity-[0.58] pointer-events-none hidden lg:block"
     viewBox="0 0 600 800"
     fill="none"
     preserveAspectRatio="xMaxYMid slice"
@@ -43,6 +43,31 @@ const BlueprintGrid = () => (
   </svg>
 );
 
+const HumanPresenceLayer = () => (
+  <div
+    className="pointer-events-none absolute inset-y-0 right-0 hidden w-[58%] overflow-hidden lg:block"
+    aria-hidden="true"
+  >
+    <img
+      src="/marina-liiv-landing/marina-presence.jpg"
+      alt=""
+      className="h-full w-full object-cover opacity-[0.28] mix-blend-soft-light grayscale-[15%] contrast-[1.05] saturate-[0.9]"
+      style={{
+        objectPosition: "58% 47%",
+        maskImage:
+          "radial-gradient(ellipse 46% 58% at 56% 46%, black 0%, rgba(0,0,0,0.72) 38%, transparent 78%)",
+        WebkitMaskImage:
+          "radial-gradient(ellipse 46% 58% at 56% 46%, black 0%, rgba(0,0,0,0.72) 38%, transparent 78%)",
+      }}
+    />
+    <div
+      className="absolute inset-0 bg-gradient-to-r from-[#4A3A73] via-[#5B4690]/45 to-[#4A3A73]/20"
+      style={{ mixBlendMode: "color" }}
+    />
+    <div className="absolute inset-0 bg-gradient-to-r from-[#4A3A73] via-transparent to-[#4A3A73]/35" />
+  </div>
+);
+
 const HeroSection = () => {
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden grain-overlay"
@@ -66,6 +91,8 @@ const HeroSection = () => {
         <span className="absolute left-[8%] top-[42%] h-3 w-3 rounded-sm opacity-70 bg-[#FDE68A]" />
         <span className="absolute bottom-16 right-[18%] h-5 w-5 rounded-sm opacity-65 bg-[#FF9BD5]" />
       </div>
+
+      <HumanPresenceLayer />
 
       <BlueprintGrid />
 
