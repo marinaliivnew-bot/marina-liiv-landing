@@ -447,32 +447,18 @@ const InterviewAndCTA = ({ onOpenChat }: { onOpenChat: () => void }) => (
   <section className="relative overflow-hidden bg-surface-alt py-20 lg:py-24 grain-overlay">
     <PixelAccents variant="warm" />
     <div className="container relative z-10 mx-auto max-w-6xl px-6 lg:px-8">
-      <div className="grid gap-10 lg:grid-cols-[0.95fr_1.05fr]">
-        <div className="space-y-5">
-          <SectionLabel>Interview cases</SectionLabel>
-          <h2 className="font-serif-display text-3xl leading-tight text-foreground sm:text-4xl">
-            То, что лучше раскрывать в разговоре
-          </h2>
-          <p className="text-sm leading-relaxed text-muted-foreground">
-            Корпоративные детали, кризисное управление и Product Owner background лучше обсуждать на интервью:
-            там можно дать контекст, но не публиковать лишнее.
-          </p>
-        </div>
-        <div className="space-y-3">
-          {[
-            "корпоративные AI-ассистенты без раскрытия промптов",
-            "кризисное управление портфелем под ограничениями",
-            "business → IT и Product Owner background",
-          ].map((item) => (
-            <div key={item} className="flex gap-3 rounded-lg border border-border/20 bg-background/35 p-4">
-              <CheckCircle2 className={`mt-0.5 h-5 w-5 flex-shrink-0 ${accentStyles.pink.text}`} />
-              <p className="text-sm leading-relaxed text-muted-foreground">{item}</p>
-            </div>
-          ))}
-        </div>
+      <div className="max-w-3xl space-y-5">
+        <SectionLabel>Следующий шаг</SectionLabel>
+        <h2 className="font-serif-display text-3xl leading-tight text-foreground sm:text-4xl">
+          Разобрать задачу и понять, где AI действительно нужен
+        </h2>
+        <p className="text-sm leading-relaxed text-muted-foreground">
+          Короткий разбор помогает отделить полезный AI-сценарий от лишней автоматизации: какие данные есть,
+          кто пользователь, какой артефакт стоит собрать первым.
+        </p>
       </div>
 
-      <div className="mt-16 rounded-2xl border border-accent-violet/25 bg-gradient-to-r from-accent-violet/15 via-[#FF8A65]/10 to-[#FACC15]/10 p-6 lg:p-8">
+      <div className="mt-10 rounded-2xl border border-accent-violet/25 bg-gradient-to-r from-accent-violet/15 via-[#FF8A65]/10 to-[#FACC15]/10 p-6 lg:p-8">
         <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
           <div className="max-w-2xl">
             <h3 className="font-serif-display text-2xl text-foreground sm:text-3xl">
