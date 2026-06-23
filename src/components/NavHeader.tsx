@@ -3,6 +3,8 @@ import { Link, useLocation } from "react-router-dom";
 import { Menu, X, ArrowRight, Sparkles } from "lucide-react";
 import { useChatContext } from "@/contexts/ChatContext";
 
+const BASE = import.meta.env.BASE_URL; // "/marina-liiv-landing/"
+
 const navLinks = [
   { label: "Опыт", href: "#experience" },
   { label: "Экспертиза", href: "#expertise" },
@@ -25,6 +27,10 @@ const NavHeader = () => {
 
   const handleClick = () => setMobileOpen(false);
 
+  // When on /cases, anchor links must use full href so the browser handles
+  // hash scrolling natively on the main page (React Router Link won't do this)
+  const anchorHref = (hash: string) => isOnCases ? `${BASE}${hash}` : hash;
+
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
@@ -45,25 +51,15 @@ const NavHeader = () => {
           </Link>
 
           <nav className="hidden md:flex items-center gap-1">
-            {navLinks.map((link) =>
-              isOnCases ? (
-                <Link
-                  key={link.href}
-                  to={`/${link.href}`}
-                  className="px-4 py-2 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
-                >
-                  {link.label}
-                </Link>
-              ) : (
-                <a
-                  key={link.href}
-                  href={link.href}
-                  className="px-4 py-2 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
-                >
-                  {link.label}
-                </a>
-              )
-            )}
+            {navLinks.map((link) => (
+              <a
+                key={link.href}
+                href={anchorHref(link.href)}
+                className="px-4 py-2 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+              >
+                {link.label}
+              </a>
+            ))}
             <Link
               to="/cases"
               className="px-4 py-2 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
@@ -80,23 +76,13 @@ const NavHeader = () => {
               <Sparkles className="w-3.5 h-3.5 text-accent-violet" />
               Диагностика
             </button>
-            {isOnCases ? (
-              <Link
-                to="/#contact"
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-md border border-border/40 text-muted-foreground text-sm font-medium transition-all duration-300 hover:text-foreground hover:border-accent-violet/30"
-              >
-                Обсудить проект
-                <ArrowRight className="w-3.5 h-3.5" />
-              </Link>
-            ) : (
-              <a
-                href="#contact"
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-md border border-border/40 text-muted-foreground text-sm font-medium transition-all duration-300 hover:text-foreground hover:border-accent-violet/30"
-              >
-                Обсудить проект
-                <ArrowRight className="w-3.5 h-3.5" />
-              </a>
-            )}
+            <a
+              href={anchorHref("#contact")}
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-md border border-border/40 text-muted-foreground text-sm font-medium transition-all duration-300 hover:text-foreground hover:border-accent-violet/30"
+            >
+              Обсудить проект
+              <ArrowRight className="w-3.5 h-3.5" />
+            </a>
           </div>
 
           <button
@@ -112,27 +98,16 @@ const NavHeader = () => {
       {mobileOpen && (
         <div className="md:hidden bg-background/95 backdrop-blur-xl border-t border-border/30">
           <nav className="container mx-auto px-6 py-4 flex flex-col gap-1">
-            {navLinks.map((link) =>
-              isOnCases ? (
-                <Link
-                  key={link.href}
-                  to={`/${link.href}`}
-                  onClick={handleClick}
-                  className="px-4 py-3 text-base font-medium text-muted-foreground hover:text-foreground transition-colors"
-                >
-                  {link.label}
-                </Link>
-              ) : (
-                <a
-                  key={link.href}
-                  href={link.href}
-                  onClick={handleClick}
-                  className="px-4 py-3 text-base font-medium text-muted-foreground hover:text-foreground transition-colors"
-                >
-                  {link.label}
-                </a>
-              )
-            )}
+            {navLinks.map((link) => (
+              <a
+                key={link.href}
+                href={anchorHref(link.href)}
+                onClick={handleClick}
+                className="px-4 py-3 text-base font-medium text-muted-foreground hover:text-foreground transition-colors"
+              >
+                {link.label}
+              </a>
+            ))}
             <Link
               to="/cases"
               onClick={handleClick}
@@ -147,25 +122,14 @@ const NavHeader = () => {
               <Sparkles className="w-3.5 h-3.5 text-accent-violet" />
               Диагностика
             </button>
-            {isOnCases ? (
-              <Link
-                to="/#contact"
-                onClick={handleClick}
-                className="mt-1 flex items-center justify-center gap-2 px-5 py-3 rounded-md border border-border/40 text-muted-foreground text-sm font-medium"
-              >
-                Обсудить проект
-                <ArrowRight className="w-3.5 h-3.5" />
-              </Link>
-            ) : (
-              <a
-                href="#contact"
-                onClick={handleClick}
-                className="mt-1 flex items-center justify-center gap-2 px-5 py-3 rounded-md border border-border/40 text-muted-foreground text-sm font-medium"
-              >
-                Обсудить проект
-                <ArrowRight className="w-3.5 h-3.5" />
-              </a>
-            )}
+            <a
+              href={anchorHref("#contact")}
+              onClick={handleClick}
+              className="mt-1 flex items-center justify-center gap-2 px-5 py-3 rounded-md border border-border/40 text-muted-foreground text-sm font-medium"
+            >
+              Обсудить проект
+              <ArrowRight className="w-3.5 h-3.5" />
+            </a>
           </nav>
         </div>
       )}
