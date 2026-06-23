@@ -232,8 +232,8 @@ const CorporateSection = () => (
           Здесь важна не картинка, а инженерия смысла
         </h2>
         <p className="text-sm leading-relaxed text-muted-foreground sm:text-base">
-          Эти кейсы раскрываются аккуратно: без промптов, внутренних ссылок, имен и архитектуры. Наружу выходит
-          только класс задачи, роль Марины и продуктовая логика.
+          Эти кейсы раскрываются аккуратно: без промптов, внутренних ссылок, имён и архитектуры. Наружу выходит
+          только класс задачи, моя роль и продуктовая логика.
         </p>
       </div>
 
@@ -274,22 +274,24 @@ const CorporateSection = () => (
         <article className={`rounded-2xl border border-t-2 border-border/25 bg-surface-alt/55 p-7 ${accentStyles.mint.top}`}>
           <div className="mb-6 flex items-start justify-between gap-4">
             <div>
-              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-accent-soft/70">Regulated MVP</p>
+              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-accent-soft/70">Insurance × Non-professional distribution</p>
               <h3 className="mt-3 text-2xl font-semibold leading-tight text-foreground">
-                AI-assisted MVP для нового страхового канала
+                Страховой канал через нетрадиционных партнёров: архитектура вместо инструкций
               </h3>
             </div>
             <IconTile icon={ShieldCheck} accent="mint" />
           </div>
           <p className="text-sm leading-relaxed text-muted-foreground">
-            0→1 проработка MVP для канала продаж страхового продукта через непрофессиональных партнеров. Бренд,
-            ссылка и детали не публикуются; кейс остается обезличенным.
+            Продажа страхового продукта через партнёров без профильной экспертизы — это не «упростить UI».
+            Это переосмыслить, как продукт понимается и продаётся на каждом шаге, когда консультанта рядом нет.
+            Бренд и детали не публикуются.
           </p>
           <div className="mt-6 space-y-3">
             {[
-              "один продукт, один сценарий, минимум шагов",
-              "продавец и клиент разведены по ролям",
-              "визуальный прототип объясняет сложные условия через guided flow",
+              "два разделённых флоу: агент ведёт сделку — интерфейс заменяет консультанта",
+              "сложные условия страховки → guided breakdown без юридического языка",
+              "исключения и отказы встроены в UX как объяснение, не как мелкий шрифт",
+              "прототип тестировался на людях без страховой экспертизы",
             ].map((item) => (
               <p key={item} className="flex gap-3 text-sm text-muted-foreground">
                 <CheckCircle2 className={`mt-0.5 h-4 w-4 flex-shrink-0 ${accentStyles.mint.text}`} />
@@ -299,7 +301,7 @@ const CorporateSection = () => (
           </div>
           <div className="mt-6 rounded-lg border border-accent-violet/15 bg-accent-violet/5 p-4">
             <p className="text-xs leading-relaxed text-muted-foreground">
-              Это MVP-концепт и визуальный прототип, а не утверждение о запущенном канале продаж.
+              MVP-концепт и визуальный прототип. Не утверждение о запущенном канале продаж — заявка на архитектурное решение сложной дистрибуционной задачи.
             </p>
           </div>
         </article>
@@ -396,8 +398,8 @@ const ArtifactSection = ({ onOpenChat }: { onOpenChat: () => void }) => (
           Быстрые визуальные доказательства вместо длинных объяснений
         </h2>
         <p className="text-sm leading-relaxed text-muted-foreground sm:text-base">
-          Этот блок ниже по иерархии. Он показывает скорость материализации идеи: страница, demo, dashboard,
-          упаковка B2B-предложения.
+          Здесь собраны быстрые артефакты — страницы, демо, дашборды. Каждый собирался под конкретную задачу
+          и доказывает одно: от идеи до рабочего результата не так далеко, как кажется.
         </p>
       </div>
 
