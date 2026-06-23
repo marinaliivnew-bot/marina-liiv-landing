@@ -48,23 +48,32 @@ const HumanPresenceLayer = () => (
     className="pointer-events-none absolute inset-y-0 right-0 hidden w-[58%] overflow-hidden lg:block"
     aria-hidden="true"
   >
-    <img
-      src="/marina-liiv-landing/marina-presence.jpg"
-      alt=""
-      className="h-full w-full object-cover opacity-[0.28] mix-blend-soft-light grayscale-[15%] contrast-[1.05] saturate-[0.9]"
-      style={{
-        objectPosition: "58% 47%",
-        maskImage:
-          "radial-gradient(ellipse 46% 58% at 56% 46%, black 0%, rgba(0,0,0,0.72) 38%, transparent 78%)",
-        WebkitMaskImage:
-          "radial-gradient(ellipse 46% 58% at 56% 46%, black 0%, rgba(0,0,0,0.72) 38%, transparent 78%)",
-      }}
-    />
-    <div
-      className="absolute inset-0 bg-gradient-to-r from-[#4A3A73] via-[#5B4690]/45 to-[#4A3A73]/20"
-      style={{ mixBlendMode: "color" }}
-    />
-    <div className="absolute inset-0 bg-gradient-to-r from-[#4A3A73] via-transparent to-[#4A3A73]/35" />
+    <div className="absolute right-[7%] top-[15%] h-[70%] w-[44%]">
+      <div className="absolute inset-[-18%] rounded-full bg-[#FFB199]/18 blur-3xl" />
+      <img
+        src="/marina-liiv-landing/marina-presence.jpg"
+        alt=""
+        className="relative h-full w-full object-cover opacity-[0.48] mix-blend-screen contrast-[1.08] saturate-[0.78] sepia-[12%]"
+        style={{
+          objectPosition: "54% 42%",
+          maskImage:
+            "radial-gradient(ellipse 48% 56% at 50% 43%, black 0%, rgba(0,0,0,0.82) 45%, transparent 82%)",
+          WebkitMaskImage:
+            "radial-gradient(ellipse 48% 56% at 50% 43%, black 0%, rgba(0,0,0,0.82) 45%, transparent 82%)",
+        }}
+      />
+      <div
+        className="absolute inset-0 bg-gradient-to-br from-[#FDE68A]/10 via-[#BFA2FF]/24 to-[#4A3A73]/35"
+        style={{
+          mixBlendMode: "color",
+          maskImage:
+            "radial-gradient(ellipse 52% 60% at 50% 43%, black 0%, rgba(0,0,0,0.78) 48%, transparent 84%)",
+          WebkitMaskImage:
+            "radial-gradient(ellipse 52% 60% at 50% 43%, black 0%, rgba(0,0,0,0.78) 48%, transparent 84%)",
+        }}
+      />
+    </div>
+    <div className="absolute inset-0 bg-gradient-to-r from-[#4A3A73] via-transparent to-[#4A3A73]/20" />
   </div>
 );
 
