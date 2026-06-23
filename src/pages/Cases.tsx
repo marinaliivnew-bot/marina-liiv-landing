@@ -4,6 +4,7 @@ import {
   ExternalLink,
   FileSearch,
   FlaskConical,
+  FileText,
   Mail,
   Send,
   ShieldCheck,
@@ -486,6 +487,15 @@ const InterviewAndCTA = () => (
             >
               <Mail className="h-4 w-4" />
               Email
+            </a>
+            <a
+              href="https://t.me/CV_Marina_Liiv"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center gap-2 rounded-md border border-border/50 px-5 py-3 text-sm font-medium text-muted-foreground transition-all duration-300 hover:border-accent-violet/30 hover:text-foreground"
+            >
+              <FileText className="h-4 w-4" />
+              Резюме
             </a>
           </div>
         </div>
