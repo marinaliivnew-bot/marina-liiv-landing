@@ -1,10 +1,10 @@
 import {
   BrainCircuit,
   CheckCircle2,
-  Download,
   ExternalLink,
   FileSearch,
   FlaskConical,
+  Mail,
   Send,
   ShieldCheck,
   Sparkles,
@@ -445,7 +445,7 @@ const ArtifactSection = ({ onOpenChat }: { onOpenChat: () => void }) => (
   </section>
 );
 
-const InterviewAndCTA = ({ onOpenChat }: { onOpenChat: () => void }) => (
+const InterviewAndCTA = () => (
   <section className="relative overflow-hidden bg-surface-alt py-20 lg:py-24 grain-overlay">
     <PixelAccents variant="warm" />
     <div className="container relative z-10 mx-auto max-w-6xl px-6 lg:px-8">
@@ -472,14 +472,6 @@ const InterviewAndCTA = ({ onOpenChat }: { onOpenChat: () => void }) => (
           </div>
           <div className="flex flex-col gap-3 sm:flex-row">
             <a
-              href="/marina-liiv-landing/cv-marina-liiv.pdf"
-              download
-              className="inline-flex items-center justify-center gap-2 rounded-md border border-border/40 px-5 py-3 text-sm font-medium text-muted-foreground transition-all duration-300 hover:border-accent-violet/30 hover:text-foreground"
-            >
-              <Download className="h-4 w-4" />
-              Скачать резюме
-            </a>
-            <a
               href="https://t.me/MarinaLiiv"
               target="_blank"
               rel="noopener noreferrer"
@@ -488,13 +480,13 @@ const InterviewAndCTA = ({ onOpenChat }: { onOpenChat: () => void }) => (
               <Send className="h-4 w-4 text-accent-soft" />
               Написать в Telegram
             </a>
-            <button
-              onClick={onOpenChat}
-              className="inline-flex items-center justify-center gap-2 rounded-md border border-accent-violet/30 bg-accent-violet/10 px-5 py-3 text-sm font-medium text-foreground transition-all duration-300 hover:border-accent-violet hover:bg-accent-violet/20 hover:shadow-glow"
+            <a
+              href="mailto:liivm@yandex.ru"
+              className="inline-flex items-center justify-center gap-2 rounded-md border border-border/50 px-5 py-3 text-sm font-medium text-muted-foreground transition-all duration-300 hover:border-accent-violet/30 hover:text-foreground"
             >
-              <Sparkles className="h-4 w-4 text-accent-soft" />
-              AI-диагност
-            </button>
+              <Mail className="h-4 w-4" />
+              Email
+            </a>
           </div>
         </div>
       </div>
@@ -546,7 +538,7 @@ const Cases = () => {
       <SectionConnector />
 
       <AnimatedSection delay={100}>
-        <InterviewAndCTA onOpenChat={openChat} />
+        <InterviewAndCTA />
       </AnimatedSection>
 
       <ChatWidget open={chatOpen} onClose={closeChat} />
