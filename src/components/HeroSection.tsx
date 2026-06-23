@@ -49,11 +49,18 @@ const HumanPresenceLayer = () => (
     aria-hidden="true"
   >
     <div className="absolute right-[7%] top-[15%] h-[70%] w-[44%]">
-      <div className="absolute inset-[-18%] rounded-full bg-[#FFB199]/18 blur-3xl" />
+      <div className="absolute inset-[-18%] rounded-full bg-[#FFB199]/20 blur-3xl" />
+      <div
+        className="absolute inset-x-[-18%] top-[18%] h-28"
+        style={{
+          background:
+            "linear-gradient(105deg, transparent 0%, rgba(253, 230, 138, 0.16) 42%, rgba(255, 177, 153, 0.24) 56%, transparent 78%)",
+        }}
+      />
       <img
         src="/marina-liiv-landing/marina-presence.jpg"
         alt=""
-        className="relative h-full w-full object-cover opacity-[0.48] mix-blend-screen contrast-[1.08] saturate-[0.78] sepia-[12%]"
+        className="relative h-full w-full object-cover opacity-[0.52] mix-blend-screen contrast-[1.06] saturate-[0.92] sepia-[18%]"
         style={{
           objectPosition: "54% 42%",
           maskImage:
@@ -63,7 +70,7 @@ const HumanPresenceLayer = () => (
         }}
       />
       <div
-        className="absolute inset-0 bg-gradient-to-br from-[#FDE68A]/10 via-[#BFA2FF]/24 to-[#4A3A73]/35"
+        className="absolute inset-0 bg-gradient-to-br from-[#FDE68A]/18 via-[#FFB199]/16 to-[#4A3A73]/28"
         style={{
           mixBlendMode: "color",
           maskImage:
@@ -72,6 +79,24 @@ const HumanPresenceLayer = () => (
             "radial-gradient(ellipse 52% 60% at 50% 43%, black 0%, rgba(0,0,0,0.78) 48%, transparent 84%)",
         }}
       />
+    </div>
+    <div className="absolute bottom-[12%] right-[30%] z-[2] w-44 -rotate-2 rounded-lg border border-[#FDE68A]/30 bg-[#271F3C]/72 p-2 shadow-[0_20px_60px_rgba(20,13,37,0.38)] backdrop-blur-md">
+      <div className="relative overflow-hidden rounded-md border border-white/10 bg-black/30">
+        <img
+          src="/marina-liiv-landing/marina-camera-check.png"
+          alt=""
+          className="h-56 w-full object-cover object-center opacity-90"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#271F3C]/50 via-transparent to-[#FDE68A]/8" />
+      </div>
+      <div className="mt-2 border-t border-white/10 pt-2">
+        <p className="text-[0.68rem] font-semibold uppercase tracking-[0.18em] text-[#FDE68A]">
+          human in the loop
+        </p>
+        <p className="mt-1 text-[0.68rem] leading-snug text-[#F7EFFF]/78">
+          не AI-аватар, просто удачный фильтр
+        </p>
+      </div>
     </div>
     <div className="absolute inset-0 bg-gradient-to-r from-[#4A3A73] via-transparent to-[#4A3A73]/20" />
   </div>
