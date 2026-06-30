@@ -128,7 +128,7 @@ const CasesHero = () => (
             {[
               ["01", "Live product", "Magic Capture", "peach"],
               ["02", "AI systems", "Корпоративные агенты", "blue"],
-              ["03", "Expert data", "Nutri Intelligence", "mint"],
+              ["03", "Expert data", "Nutri Mind", "mint"],
               ["04", "Artifacts", "Vibe-coding и dashboards", "yellow"],
             ].map(([num, title, desc, accent]) => (
               <div
@@ -319,20 +319,20 @@ const ExpertDataSection = () => (
         <div className="space-y-5">
           <SectionLabel>Expert data & safety</SectionLabel>
           <h2 className="font-serif-display text-3xl leading-tight text-foreground sm:text-5xl">
-            Nutri Intelligence Agent: AI там, где нельзя фантазировать
+            Nutri Mind: GPT‑агент, который вырастает в SaaS‑прототип
           </h2>
           <p className="text-base leading-relaxed text-muted-foreground">
-            Кейс важен не как нутри-проект, а как пример работы с чувствительными экспертными данными:
-            анализы, анкеты, дневники питания, жалобы. Цена неверной интерпретации высокая, поэтому агент
-            работает как структурный помощник, а не как источник диагнозов.
+            Проект начинался как GPT‑агент для нутрициолога, а сейчас развивается в продуктовую систему:
+            кабинет специалиста, кабинет клиента, клиенты и обращения во времени, опросник, дневник питания,
+            файлы, приватная база знаний, черновики рекомендаций и клиентская версия отчета.
           </p>
         </div>
         <div className={`rounded-2xl border border-t-2 border-border/25 bg-background/45 p-6 ${accentStyles.mint.top}`}>
           {[
-            "не дает диагнозов, назначений и дозировок",
-            "показывает, какие параметры извлек",
-            "при неполных данных отмечает ограничения",
-            "финальное решение оставляет специалисту",
+            "локальный SPA‑прототип хранит состояние по клиентам и обращениям",
+            "клиент видит только вопросы и готовую версию рекомендаций",
+            "нутрициолог работает с методичками, гипотезами и черновиком отчета",
+            "MVP‑архитектура описана через Supabase, RLS, Storage и серверный AI‑вызов",
           ].map((item) => (
             <div key={item} className="flex gap-3 border-b border-border/20 py-4 last:border-b-0">
               <span className={`mt-0.5 inline-flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-md border ${accentStyles.mint.tile}`}>

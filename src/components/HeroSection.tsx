@@ -140,12 +140,14 @@ const HeroSection = () => {
           </div>
 
           <h1 className="font-serif-display text-3xl sm:text-4xl lg:text-5xl text-foreground leading-[1.15] tracking-tight">
-            Помогаю разобраться, где в&nbsp;вашем бизнесе{" "}
-            <span className="text-gradient">реально нужен AI&nbsp;— и&nbsp;сделать это</span>
+            Перевожу сложные бизнес‑задачи{" "}
+            <span className="text-gradient">в&nbsp;AI‑сценарии, прототипы и&nbsp;понятные решения</span>
           </h1>
 
           <p className="text-base sm:text-lg text-muted-foreground max-w-xl leading-relaxed">
-            15&nbsp;лет в&nbsp;продуктах и&nbsp;P&amp;L&nbsp;— теперь проектирую AI‑системы. Без хайпа и&nbsp;лишних обещаний.
+            15&nbsp;лет в&nbsp;продуктах, P&amp;L и&nbsp;кросс‑функциональных проектах.
+            Сейчас проектирую AI‑агентов и&nbsp;рабочие прототипы: от&nbsp;логики
+            и&nbsp;промптов до&nbsp;тестирования и&nbsp;упаковки для команды.
           </p>
 
           <div className="pt-2 flex flex-wrap gap-3">
