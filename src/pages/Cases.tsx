@@ -326,6 +326,9 @@ const ExpertDataSection = () => (
             кабинет специалиста, кабинет клиента, клиенты и обращения во времени, опросник, дневник питания,
             файлы, приватная база знаний, черновики рекомендаций и клиентская версия отчета.
           </p>
+          <PrimaryLink href="https://marinaliivnew-bot.github.io/marina-liiv-landing/nutrimind/">
+            Открыть Nutri Mind
+          </PrimaryLink>
         </div>
         <div className={`rounded-2xl border border-t-2 border-border/25 bg-background/45 p-6 ${accentStyles.mint.top}`}>
           {[
